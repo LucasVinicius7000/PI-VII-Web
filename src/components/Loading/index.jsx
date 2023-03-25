@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
-
+import ModalAviso from '../ModalAviso';
+import IconeErro from "./../../assets/Icone-Erro.svg";
 
 export default function Loading() {
     return (

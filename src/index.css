@@ -1,3 +1,8 @@
+/*
+  -> Essa é a única folha de estilos global (é aplicado em todas páginas) da aplicação.
+  -> Não modifique sem ter certeza.
+*/
+
 body {
   margin: 0;
   padding: 0;
