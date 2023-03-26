@@ -1,0 +1,41 @@
+.container {
+  background-color: #f0f0f5;
+  width: 9.9rem;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+.textos {
+  text-align: center;
+  padding: 0px 0.5rem 0px 0.5rem;
+}
+#imagem {
+  display: flex;
+  padding: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffb84d;
+  border-radius: 8px 8px 0px 0px;
+}
+#titulo {
+  margin: 0px;
+  text-align: left;
+  font-family: "Poppins";
+  font-weight: 600;
+  color: #3d3d4d;
+  overflow: hidden;
+}
+#local {
+  text-align: left;
+  font-family: "Roboto";
+  color: #3d3d4d;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+#preco {
+  font-family: "Roboto";
+  color: #39b100;
+  text-align: center;
+  overflow: hidden;
+}
