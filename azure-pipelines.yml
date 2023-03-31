@@ -9,7 +9,7 @@ variables:
 steps:
 - checkout: self
 - script: |
-    git clone https://lucasvinicius7000:bkstg2ugk2cqqt5jknngpsrsedp26oox3jn6d3oamxq4yiti6jqa@dev.azure.com/lucasvinicius7000/PI%20VII/_git/PI-VII-Web
+    git clone https://lucasvinicius7000:6h7bm4y5dpg4ybd6o5nolpgw7xlrltnbwmdqkzkaknh3cocshnba@dev.azure.com/lucasvinicius7000/PI%20VII/_git/PI-VII-Web
     cd PI-VII-Web
     git config user.email "$(user_email)"
     git config user.name "$(user_name)"
