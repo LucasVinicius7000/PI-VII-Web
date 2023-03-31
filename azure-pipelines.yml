@@ -4,7 +4,7 @@ trigger:
 variables:
   user_email: "lucasvinicius7000@gmail.com"
   user_name: "lucasvinicius7000"
-  githubtoken: "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"
+  githubtoken: "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"
 
 steps:
 - checkout: self
