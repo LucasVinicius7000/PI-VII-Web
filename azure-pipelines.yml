@@ -1,0 +1,17 @@
+trigger:
+- main
+
+variables:
+  user_email: "lucasvinicius7000@gmail.com"
+  user_name: "lucasvinicius7000"
+
+steps:
+- checkout: self
+- script: |
+    git clone https://lucasvinicius7000:$(AzureTokenPAT)@dev.azure.com/lucasvinicius7000/PI%20VII/_git/PI-VII-Web
+    cd PI-VII-Web
+    git config user.email "$(user_email)"
+    git config user.name "$(user_name)"
+    git remote set-url origin https://$(githubToken)@github.com/LucasVinicius7000/PI-VII-Web.git
+    git push origin main -f
+  displayName: 'Sync with GitHub'

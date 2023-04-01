@@ -1,6 +1,5 @@
-import Header from "./../../components/Header/index";
-import pao from "./../../assets/pao1.svg";
-
+import CardCategoria from "../../components/CardCategoria";
+import CardProduto from "../../components/CardProduto";
 export default function Home() {
   return <div>
   </div>;
