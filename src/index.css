@@ -15,16 +15,16 @@ body {
   --details-3: #FFC46B; /* button laranja claro */
   --details-4:  #39B100; /* verde */
 
-  --font-color-1: #FFFFFF; /* //white */
+  --font-color-1: #FFFFFF; /* branco*/
   --font-color-2: #D4CCFF; /* cinza claro */
   --font-color-3: #7A1818; /* vermelho escuro */
-  --font-color-4: #f0f0f5; /* //off */
+  --font-color-4: #f0f0f5; /* off */
 
   --red-500: #FF0202; /* vermelho */
 
-  --black-01: #000;
+  --black-01: #000; /* preto */
   --black-02: #000000cc;
   --black-02: #3d3d4d;
 
-  --gray-200: #6c6c80;
+  --gray-200: #6c6c80; /* cinza escuro */
 }
