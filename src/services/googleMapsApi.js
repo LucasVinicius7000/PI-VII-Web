@@ -6,6 +6,7 @@ import axios from "axios";
 
 
 const apiKey = process.env.REACT_APP_API_KEY;
+const proxy = process.env.REACT_APP_API_PROXY;
 
 export async function BuscaEnderecosPorTexto(userText, sessionToken) {
 
@@ -16,11 +17,13 @@ export async function BuscaEnderecosPorTexto(userText, sessionToken) {
         const baseUrl = process.env.REACT_APP_PLACE_AUTOCOMPLETE_API_BASE_URL;
 
         let api = axios.create({
-            baseURL: baseUrl,
+            baseURL: proxy,
         });
 
+        let url = encodeURIComponent(`${baseUrl}language=pt-BR&input=${userText}&components=country:br&sessiontoken=${sessionToken}&key=${apiKey}`);
+        
         try {
-            const response = await api.get(`language=pt-BR&input=${userText}&components=country:br&sessiontoken=${sessionToken}&key=${apiKey}`);
+            const response = await api.get(`create?url=${url}`);
             let data = response.data;
             if (data?.predictions.length > 0) {
                 return data?.predictions.map((item) => {
@@ -46,12 +49,14 @@ export async function BuscaCoordenadasPorId(placeId, sessionToken) {
     const baseUrl = process.env.REACT_APP_PLACE_DETAILS_API_BASE_URL;
 
     let api = axios.create({
-        baseURL: baseUrl,
+        baseURL: proxy,
     });
 
     try {
 
-        const response = await api.get(`language=pt-BR&place_id=${placeId}&fields=formatted_address,name,geometry&sessiontoken=${sessionToken}&key=${apiKey}`);
+        let url = encodeURIComponent(`${baseUrl}language=pt-BR&place_id=${placeId}&fields=formatted_address,name,geometry&sessiontoken=${sessionToken}&key=${apiKey}`);
+
+        const response = await api.get(`create?url=${url}`);
         let data = response.data;
         console.log({
             lat: data?.result?.geometry?.location?.lat,
