@@ -1,0 +1,73 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerInput{
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #F0F0F5;
+    color: #B7B7CC;
+    border-radius: 0.5rem;
+    font-family: "Roboto";
+}
+
+#icon{
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem 0 1rem;
+}
+
+.input{
+    border: none;
+    background-color: inherit; 
+    color: inherit;
+    font-weight: 800;
+    width: 100%;
+}
+
+.input::placeholder{
+    font-weight:400; 
+}
+
+
+.input:focus{
+    outline: none;
+}
+
+#borderAdjust{
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.list{
+    margin-top: 0.1rem;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: #f7f7f9c0;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.85rem;
+}
+
+.list > *{
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.list > *:hover{
+    cursor: pointer;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
