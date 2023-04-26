@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/Loading";
 import Home from "./pages/Home";
 import SolicitaEndereco from "./components/SolicitaEndereco";
+import CadastroEmpresa from "./pages/CadastroEmpresa";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
     element: <SolicitaEndereco>
       <Home />
     </SolicitaEndereco>,
+  },
+  {
+    path: "/cadastroEmpresa",
+    element: <CadastroEmpresa />,
   },
 ]);
 
