@@ -5,6 +5,8 @@ import Input from "../../components/Input";
 import styles from './styles.module.css';
 import { IoAccessibility } from "react-icons/io5" ;   
 
+//Ainda falta ajustar layout para desktop
+
 export default function CadastroEmpresa() {
   return <div className={styles.container}>
     <br/>
