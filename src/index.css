@@ -18,11 +18,13 @@ body, html, #root {
   --details-2: #FFB84D; /* button laranja */
   --details-3: #FFC46B; /* button laranja claro */
   --details-4:  #39B100; /* verde */
+  --details-5:  #FDD482; /* laranja label*/
 
   --font-color-1: #FFFFFF; /* branco*/
   --font-color-2: #D4CCFF; /* cinza claro */
   --font-color-3: #7A1818; /* vermelho escuro */
   --font-color-4: #f0f0f5; /* off */
+  --font-color-5: #B7B7CC; /* cinza placeholder */
 
   --red-500: #FF0202; /* vermelho */
 

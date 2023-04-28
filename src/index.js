@@ -6,6 +6,7 @@ import Loading from "./components/Loading";
 import Home from "./pages/Home";
 import SolicitaEndereco from "./components/SolicitaEndereco";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
+import HomeEmpresa from "./pages/HomeEmpresa";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastroEmpresa",
     element: <CadastroEmpresa />,
+  },
+  {
+    path: "/homeEmpresa",
+    element: <HomeEmpresa />,
   },
 ]);
 

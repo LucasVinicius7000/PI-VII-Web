@@ -1,11 +1,11 @@
 import styles from "./styles.module.css";
 
-
 export default function Button({
   children,
   isLoading = false,
   height,
   width,
+  paddingLeft,
   text,
   alternativeStyle,
   ...rest
@@ -20,11 +20,12 @@ export default function Button({
   };
 
   return (
-    <button
-      className={alternativeStyle ? styles.alternative : styles.container}
-      style={{ width: `${width}px` }}
-      {...rest}
-    >{text}
-    </button>
+    <div style={{ width: `${width}px`, paddingLeft:  `${paddingLeft}px`}}>
+      <button
+        className={alternativeStyle ? styles.alternative : styles.container}
+        {...rest}
+      >{text}
+      </button>
+    </div>
   );
 }

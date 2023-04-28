@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    height: 100%; 
+    display: flex;/* 
+    align-items: center;
+    justify-content: center;  */
+    flex-direction: column; 
+    font-family: 'Poppins';
+    background-color: var(--font-color-1);
+}
+
+.box {
+    display : flex;
+}
+
+.categorias {
+    padding-left: 30px;
+}
+
+.categorias p {
+    font-size: 16px;
+    color: var(--details-1);
+    padding-top: 5px;
+}
+
+.categorias h2 {
+    font-size: 20px;
+    color: var(--black-02);
+}
+
+@media (max-width:895px){
+   
+}
