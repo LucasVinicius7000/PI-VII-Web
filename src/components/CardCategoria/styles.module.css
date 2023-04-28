@@ -1,5 +1,5 @@
 .container {
-  background-color: #f0f0f5;
+  background-color: var(--font-color-4);
   width: 8.5rem;
   height: 8rem;
   border-radius: 8px;
@@ -11,7 +11,7 @@
 
 #paragrafo2 {
   font-family: "poppins";
-  color: #6c6c80;
+  color: var(--gray-200);
   margin: 0px;
   width: 80%;
   overflow: hidden;

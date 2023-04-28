@@ -18,13 +18,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #E05100;
+    background-color: var(--details-1);
 }
 
 .loadingText {
     font-size: 24px;
     font-weight: bold;
-    color: white;
+    color: var(--font-color-1);
     margin-top: 16px;
 }
 
@@ -39,7 +39,7 @@
     height: 8px;
     border-radius: 50%;
     margin: 0 4px;
-    background-color: white;
+    background-color: var(--font-color-1);
     animation: loading 1s ease-in-out infinite;
 }
 
