@@ -1,0 +1,24 @@
+.container {
+  background-color: #f0f0f5;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.image img {
+  padding: 20px;
+  background-color: #ffb84d;
+  border-radius: 8px;
+}
+.text {
+  text-align: center;
+  margin: 10px;
+}
+#titulo {
+  font-family: "Poppins";
+  font-weight: 600;
+}
+#endereco {
+  font-family: "Roboto";
+  font-weight: 400;
+}

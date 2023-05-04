@@ -1,9 +1,10 @@
-import CardCategoria from "../../components/CardCategoria";
-import CardProduto from "../../components/CardProduto";
-export default function Home() {
-  return <div>
-    <br></br>
-    <button><a href="../cadastroEmpresa">Cadastro de Empresa</a></button>
-  </div>;
-}
+import styles from "./styles.module.css";
+import Endereco from "../../components/Endereco";
 
+export default function Home() {
+  return <Endereco>
+    <div className={styles.container}>
+      explicação: uma vez que vc forneceu suas coordenadas vc já pode visualizar a tela Home
+    </div>;
+  </Endereco>
+}
