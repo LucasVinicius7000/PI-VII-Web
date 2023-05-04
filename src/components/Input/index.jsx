@@ -1,35 +1,19 @@
 import styles from "./styles.module.css";
 
-
-export default function Input({
-  children,
-  isLoading = false,
-  height,
-  width,
-  text,
-  iconRight,
-  alternativeStyle,
-  ...rest
-}) {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    //animationData: loadingSvg,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
-
-  return (
-    <>
-    <input
-      className={alternativeStyle ? styles.input : styles.container}
-      style={{ width: `${width}px` }}
-      {...rest}
-    >
-    </input>
+export default function Input
+({
+startIcon, 
+placeholder, 
+endIcon, 
+onChange,
+hasError
+})
+{
     
-    {iconRight && <div className={styles.iconRight}>{iconRight}</div>}
-    </>
-  );
+    return <div className={styles.container} id={hasError && styles.containerError}>
+        {startIcon}
+        {startIcon && <div className={styles.verticalDeco}></div>}
+        <input onChange={onChange} placeholder={placeholder} id={hasError && styles.inputError}></input>
+        {endIcon}
+    </div>
 }

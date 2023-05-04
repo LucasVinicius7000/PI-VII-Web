@@ -1,16 +1,19 @@
 import styles from "./styles.module.css";
-import Search from "./../Search";
+import Search from "../Search";
 import { BsGeoAlt, BsSearch } from "react-icons/bs";
-import { useEffect, useState } from "react";
-import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "./../../services/googleMapsApi.js";
+import { useEffect, useState, useContext } from "react";
+import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/googleMapsApi.js";
+import { UserContext } from "../../contexts/userContext";
 import { v4 as uuidv4 } from 'uuid';
 
-export default function SolicitaEndereco({ children }) {
+export default function Endereco({ children }) {
+
+
+    const { userCoordinates, setUserCoordinates } = useContext(UserContext);
 
     const [sessionToken, setSessionToken] = useState(uuidv4());
     const [addresses, setAddresses] = useState([]);
     const [addressSelected, setAddressSelected] = useState('');
-    const [coordinates, setCoordinates] = useState(null);
     const [renderChildren, setRenderChildren] = useState(false);
 
     const handleChange = async (e) => {
@@ -23,23 +26,31 @@ export default function SolicitaEndereco({ children }) {
 
     const handleSelection = async (item) => {
         setAddressSelected(item.value); // Seta o endereço selecionado
-        setCoordinates(await BuscaCoordenadasPorId(item.placeId, sessionToken)); // Seta as coordenadas encontradas
+        setUserCoordinates(await BuscaCoordenadasPorId(item.placeId, sessionToken)); // Seta as coordenadas encontradas
         setAddresses([]); // Limpa as sugestoes
         setSessionToken(uuidv4()); // Gera um novo token de sessão
     }
 
+    useEffect(() => {
+        const firstSearch = async () => {
+            await BuscaCoordenadasPorId('', sessionToken);
+        }
+        firstSearch();
+    },[]);
+
     const handleStart = () => {
         // Salva as coordenadas no localStorage
-        localStorage.setItem("lat", coordinates?.lat);
-        localStorage.setItem("lng", coordinates?.lng);
+        localStorage.setItem("lat", userCoordinates?.lat);
+        localStorage.setItem("lng", userCoordinates?.lng);
         setRenderChildren(true);
     }
 
-    useEffect(()=>{
-       let lat = localStorage.getItem("lat"); 
-       let lng = localStorage.getItem("lng");
-       if(lat && lng) setRenderChildren(true);
-    },[]);
+    useEffect(() => {
+        // Confere se as coordenadas foram salvas no localStorage
+        let lat = localStorage.getItem("lat");
+        let lng = localStorage.getItem("lng");
+        if (userCoordinates?.lat && userCoordinates?.lng && lat && lng) setRenderChildren(true);
+    }, [userCoordinates]);
 
 
     return !renderChildren ? <div className={styles.main}>
@@ -57,7 +68,7 @@ export default function SolicitaEndereco({ children }) {
                 searchIcon={<BsSearch size={20} style={{ paddingRight: "1rem", cursor: "pointer" }} />}
                 placeholder={"Busque seu endereço aqui.."}
             />
-            {coordinates?.lat && coordinates?.lng ? <div onClick={handleStart} className={styles.start}>Começar</div> : ''}
+            {userCoordinates?.lat && userCoordinates?.lng ? <div onClick={handleStart} className={styles.start}>Começar</div> : ''}
         </div>
     </div> : children
 

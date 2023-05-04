@@ -2,17 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Loading from "./components/Loading";
 import Home from "./pages/Home";
 import SolicitaEndereco from "./components/SolicitaEndereco";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
+import CadastroCliente from "./pages/CadastroCliente";
+import UserContextProvider from "./contexts/userContext";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SolicitaEndereco>
-      <Home />
-    </SolicitaEndereco>,
+    element: <Home />
+      
+  },
+  {
+    path: "/login",
+    element: <div>Tela de login deve vir aqui</div>
+  },
+  {
+    path: "/cliente/cadastro",
+    element: <CadastroCliente/>
+  },
+  {
+    path: "/estabelecimento/cadastro",
+    element: <div>Tela de cadastro do estabelecimento deve vir aqui</div>
   },
   {
     path: "/cadastroEmpresa",
@@ -22,5 +34,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <RouterProvider router={router} />
+  <UserContextProvider>
+    <RouterProvider router={router} />
+  </UserContextProvider>
 );
