@@ -13,13 +13,14 @@ import CardGeral from "../../components/CardGeral";
 export default function HomeEmpresa() {
   return <>
     <Header/>    
-    <Search
-        width={475}
-        paddingLeft={600}
-        paddingBottom={20}
-        placeholder={"Qual produto você procura?"}
-    />
+    
     <div className={styles.container}>
+        <Search
+            width={475}
+            paddingLeft={600}
+            paddingBottom={20}
+            placeholder={"Qual produto você procura?"}
+        />
         <div className={styles.button}>
             <Button
                 text={"Cadastrar Produto"}
@@ -30,7 +31,7 @@ export default function HomeEmpresa() {
         <div className={styles.categorias}>     
             <div className={styles.box}>
                 <h2>Categorias</h2> 
-                <p>Ver mais</p>  
+                <p className={styles.espace}>Ver mais</p>  
             </div>
             <br/>     
             <div className={styles.box}>
