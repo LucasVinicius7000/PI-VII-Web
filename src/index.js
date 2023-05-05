@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
+import CadastroProduto from "./pages/CadastroProduto";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/estabelecimento/cadastro",
     element: <div>Tela de cadastro do estabelecimento deve vir aqui</div>
+  },
+  {
+    path: "/empresa/cadastroProduto",
+    element: <CadastroProduto/>
   },
 ]);
 

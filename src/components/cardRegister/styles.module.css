@@ -1,0 +1,23 @@
+.card {
+    position: absolute;
+    width: 20.4375rem;
+    height: 20.5625rem;
+    left: 4.25rem;
+    top: 16.1875rem;
+    background: #ffb84d;
+    border-radius: 0.5rem 0.5rem 0 0;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.5);
+}
+
+.texto {
+    /* ... */
+    text-align: center;
+}
