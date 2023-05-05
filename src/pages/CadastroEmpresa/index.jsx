@@ -26,11 +26,23 @@ export default function CadastroEmpresa() {
         <img id={styles.iconBottom} alt="Ícones diversos no topo." src={DecorationIconsBottom} />
         <section className={styles.signUpSection}>
             <img style={{marginTop:"20px"}} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
-            <span>Cadastre-se para utilizar a plataforma LocalStore.</span>
+            <span>Cadastre sua empresa para utilizar a plataforma LocalStore.</span>
             <form className={styles.formulario}>
                 <Input
-                    placeholder={"Nome Completo"}
+                    placeholder={"Razão Social"}
                     startIcon={<img src={IconeUsuario} alt="Ícone usuário." />}
+                />
+                <Input
+                    placeholder={"Nome Fantasia"}
+                    startIcon={<img src={IconFantasia} alt="Ícone usuário." />}
+                />
+                <Input
+                    placeholder={"CNPJ"}
+                    startIcon={<img src={IconCNPJ} alt="Ícone usuário." />}
+                />
+                <Input
+                    placeholder={"Endereço"}
+                    startIcon={<img src={IconEndereco} alt="Ícone usuário." />}
                 />
                 <Input
                     placeholder={"Email"}
@@ -85,7 +97,6 @@ export default function CadastroEmpresa() {
                 <Button
                   placeholder={"Cadastrar"}
                 />
-                <br></br>
             </form>
         </section>
 </div>

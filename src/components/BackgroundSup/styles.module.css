@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 110vh;
+}
+
+
+@media (max-width:895px){
+    .container{      
+        height: 125vh;
+    }
+}
