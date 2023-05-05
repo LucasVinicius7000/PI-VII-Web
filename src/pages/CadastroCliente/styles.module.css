@@ -1,80 +1,80 @@
 .container{
     width: 100%;
     height: 100%;
-    background-color: #E05100;
+    background-color: var( --details-1);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.container section{
+  }
+  
+  .container section{
     width: 27.5rem;
     min-width: 14rem;
     max-width: 100%;
     z-index: 1;
-}
-
-.signUpSection{
+  }
+  
+  .signUpSection{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.signUpSection > span {
-    color: #D4CCFF;
+  }
+  
+  .signUpSection > span {
+    color: var(--font-color-2);
     font-size: 15px;
     margin:1.6875rem 0 1.5rem 0; 
     user-select: none;
-}
-
-#iconTop{
+  }
+  
+  #iconTop{
     max-width: 100%;
-    position: absolute;
+    position: fixed;
     top:0;
     left: 0;
     z-index: 0;
-}
-
-#iconBottom{
+  }
+  
+  #iconBottom{
     max-width: 100%;
-    position: absolute;
+    position: fixed;
     bottom:0;
     right: 0;
     z-index: 0;
-}
-
-.formulario{
+  }
+  
+  .formulario{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap:0.5rem;
-}
-
-#unequalPass{
+  }
+  
+  #unequalPass{
     text-align:center;
     width: fit-content;
     max-width: 100%;
     padding: 5px 10px;
     border-radius: 4px;
-    background-color: #E03E1A;
-    color:#ffffff;
+    background-color: var( --details-1);
+    color:var(--font-color-1);
     font-weight: 400;
     user-select: none;
     align-self: start;
-}
-
-
-@media(max-width:990px){
+  }
+  
+  
+  @media(max-width:990px){
     .container section{
         width: 80%;
     }
-}
-
-@media(max-width:500px){
+  }
+  
+  @media(max-width:500px){
     .signUpSection > span {
         width: 80%;
     }
-}
+  }

@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
+//import SolicitaEndereco from "./components/SolicitaEndereco";
+import CadastroEmpresa from "./pages/CadastroEmpresa";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
 
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/estabelecimento/cadastro",
     element: <div>Tela de cadastro do estabelecimento deve vir aqui</div>
+  },
+  {
+    path: "/cadastroEmpresa",
+    element: <CadastroEmpresa />,
   },
 ]);
 
