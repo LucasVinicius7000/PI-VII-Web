@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import CombinedComponent from "../../components/columCard/columCard";
+import CombinedComponent from "../../components/columCard";
 import styles from "./styles.module.css";
 
 export default function CadastroProduto() {
@@ -7,7 +7,7 @@ export default function CadastroProduto() {
     <div className={styles.container}>
       <Header />
 
-       <CombinedComponent texto={"Insira uma Imagem"}/>
+      <CombinedComponent texto={"Insira uma Imagem"}/>
     </div>
   );
 }
