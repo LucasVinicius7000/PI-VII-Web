@@ -7,19 +7,25 @@ import Input from "../../components/Input";
 import IconeUsuario from "./../../assets/IconeUsuario.svg";
 import IconeSenha from "./../../assets/IconeSenha.svg";
 import IconeSenhaComErro from "./../../assets/IconeSenhaComErro.svg";
+import IconFantasia from "./../../assets/IconFantasia.svg";
+import IconCNPJ from "./../../assets/IconCNPJ.svg";
+import IconEndereco from "./../../assets/IconEndereco.svg";
+import IconEmail from "./../../assets/IconEmail.svg";
+import IconTelefone from "./../../assets/IconTelefone.svg";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import Button from "../../components/Button";
 
-export default function CadastroCliente() {
+export default function CadastroEmpresa() {
+  
+  const [hasError, setHasError] = useState(false);
+  const [passIsVisible, setPassIsVisible] = useState(true);
 
-    const [hasError, setHasError] = useState(false);
-    const [passIsVisible, setPassIsVisible] = useState(true);
-
-    return <div className={styles.container}>
-        <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
+  return <div className={styles.container}>
+    <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
         <img id={styles.iconBottom} alt="Ícones diversos no topo." src={DecorationIconsBottom} />
         <section className={styles.signUpSection}>
-            <img src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
+            <img style={{marginTop:"20px"}} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
             <span>Cadastre-se para utilizar a plataforma LocalStore.</span>
             <form className={styles.formulario}>
                 <Input
@@ -28,11 +34,11 @@ export default function CadastroCliente() {
                 />
                 <Input
                     placeholder={"Email"}
-                    startIcon={<img src={IconeUsuario} alt="Ícone usuário." />}
+                    startIcon={<img src={IconEmail} alt="Ícone usuário." />}
                 />
                 <Input
                     placeholder={"Telefone"}
-                    startIcon={<img src={IconeUsuario} alt="Ícone usuário." />}
+                    startIcon={<img src={IconTelefone} alt="Ícone usuário." />}
                 />
                 <Input
                     hasError={hasError}
@@ -75,7 +81,12 @@ export default function CadastroCliente() {
                     }
                 />
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
+                
+                <Button
+                  placeholder={"Cadastrar"}
+                />
+                <br></br>
             </form>
         </section>
-    </div>
+</div>
 }
