@@ -17,15 +17,15 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
 
 export default function CadastroEmpresa() {
-  
-  const [hasError, setHasError] = useState(false);
-  const [passIsVisible, setPassIsVisible] = useState(true);
 
-  return <div className={styles.container}>
-    <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
+    const [hasError, setHasError] = useState(false);
+    const [passIsVisible, setPassIsVisible] = useState(true);
+
+    return <div className={styles.container}>
+        <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
         <img id={styles.iconBottom} alt="Ícones diversos no topo." src={DecorationIconsBottom} />
         <section className={styles.signUpSection}>
-            <img style={{marginTop:"20px"}} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
+            <img style={{ marginTop: "20px" }} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
             <span>Cadastre-se para utilizar a plataforma LocalStore.</span>
             <form className={styles.formulario}>
                 <Input
@@ -81,12 +81,12 @@ export default function CadastroEmpresa() {
                     }
                 />
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
-                
+
                 <Button
-                  placeholder={"Cadastrar"}
+                    placeholder={"Cadastrar"}
                 />
                 <br></br>
             </form>
         </section>
-</div>
+    </div>
 }
