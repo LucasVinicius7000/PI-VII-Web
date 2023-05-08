@@ -13,4 +13,5 @@
     font-size: 18px;
     margin: 1em 0 1em 0;
     z-index: 999;
+    cursor: pointer;
 }

@@ -5,7 +5,7 @@ export default function Search({ decoIcon, searchIcon, onSearch, placeholder, va
 
     
     return <div className={styles.container}>
-        <div className={styles.containerInput} id={listItemsResult.length > 0 ? styles.borderAdjust : ""}>
+        <div className={styles.containerInput} id={listItemsResult.length > 0 ? styles.borderAdjust : undefined}>
             <span id={styles.icon}>{decoIcon}</span>
             <input value={value} placeholder={placeholder} className={styles.input} onChange={onChange}></input>
             <span onClick={onSearch}>{searchIcon}</span>

@@ -5,9 +5,12 @@ export default function Button
 placeholder, 
 alternativeStyle,
 width,
+onClick
 })
 {
-    return <div className={alternativeStyle ? styles.alternative : styles.container}
+    return <div
+    onClick={onClick} 
+    className={alternativeStyle ? styles.alternative : styles.container}
     style={{ width: `${width}px` }}> {placeholder}
     </div>
 }
