@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>Tela de login deve vir aqui</div>
+    element: <Login/>
   },
   {
     path: "/cliente/cadastro",
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/cadastroEmpresa",
-    element: <CadastroEmpresa />,
+    element: <CadastroEmpresa/>,
   },
 ]);
 
