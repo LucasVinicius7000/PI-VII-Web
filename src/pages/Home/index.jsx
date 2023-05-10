@@ -1,10 +1,5 @@
 import styles from "./styles.module.css";
-import { useEffect, useState } from "react";
-import CardCategoria from "../../components/CardCategoria";
-import CardEstabelecimento from "../../components/CardEstabelecimento";
-import CardProduto from "../../components/CardProduto";
-import useGeolocation from "../../hooks/useGeolocation";
-import SolicitaEndereco from "./../../components/SolicitaEndereco";
+import Endereco from "../../components/Endereco";
 
 export default function Home() {
   return <div className={styles.container}>

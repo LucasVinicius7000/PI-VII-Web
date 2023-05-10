@@ -1,0 +1,105 @@
+.container{
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    background-color: var( --details-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container section{
+    width: 27.5rem;
+    min-width: 14rem;
+    max-width: 100%;
+    z-index: 1;
+  }
+  
+  .signUpSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signUpSection > span {
+    color: var(--font-color-2);
+    font-size: 15px;
+    margin:1.6875rem 0 1.5rem 0; 
+    user-select: none;
+  }
+
+  
+  #iconTop{
+    max-width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  #iconBottom{
+    max-width: 100%;
+    position: fixed;
+    bottom:0;
+    right: 0;
+    z-index: 0;
+  }
+  
+  .formulario{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem;
+  }
+  
+  #unequalPass{
+    text-align:center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: var( --details-1);
+    color:var(--font-color-1);
+    font-weight: 400;
+    user-select: none;
+    align-self: start;
+  }
+
+  .eyes{
+    cursor: pointer;
+  }
+  
+  .modalError{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:1rem;
+    font-size:1.4rem;
+    color: var(--font-color-1);
+    font-weight: 700;
+    text-align: center;
+  }
+
+
+ .destaqueErro{
+  color: var(--details-2);
+ }
+  
+  @media(max-width:990px){
+    .container section{
+        width: 80%;
+    }
+  }
+  
+  @media(max-width:500px){
+    .signUpSection > span {
+        width: 80%;
+    }
+  }
