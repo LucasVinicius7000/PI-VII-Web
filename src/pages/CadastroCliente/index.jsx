@@ -7,9 +7,6 @@ import Input from "../../components/Input";
 import IconeUsuario from "./../../assets/IconeUsuario.svg";
 import IconeSenha from "./../../assets/IconeSenha.svg";
 import IconeSenhaComErro from "./../../assets/IconeSenhaComErro.svg";
-import IconFantasia from "./../../assets/IconFantasia.svg";
-import IconCNPJ from "./../../assets/IconCNPJ.svg";
-import IconEndereco from "./../../assets/IconEndereco.svg";
 import IconEmail from "./../../assets/IconEmail.svg";
 import IconTelefone from "./../../assets/IconTelefone.svg";
 import { AiFillEye } from "react-icons/ai";
@@ -18,6 +15,7 @@ import Button from "../../components/Button";
 import { MdEmail } from "react-icons/md";
 import ModalAviso from "./../../components/ModalAviso";
 import IconeErro from "../../assets/Icone-Erro.svg";
+import api from "../../services/api";
 
 export default function CadastroEmpresa() {
 
@@ -36,7 +34,22 @@ export default function CadastroEmpresa() {
         if (invalidEmail === false && senha !== '' && senha === confirmation && name !== '' && telefone !== '') {
             setCanSubmit(true);
         } else setCanSubmit(false);
-    }, [invalidEmail, senha, confirmation, name,telefone])
+    }, [invalidEmail, senha, confirmation, name, telefone])
+
+
+    const handleSubmit = async () => {
+
+        let result = await api.post("/cliente/cadastro", {
+            name: name,
+            userName: telefone + Math.random(),
+            senha: senha,
+            email: email,
+            cpf: 16334765612,
+            telefone: telefone,
+        });
+        result = result.data;
+
+    }
 
 
     return <div className={styles.container}>
@@ -48,6 +61,7 @@ export default function CadastroEmpresa() {
                 {email === '' && <span>* O campo <span className={styles.destaqueErro}>EMAIL</span> precisa ser preenchido com um valor válido.</span>}
                 {invalidEmail && <span> * O <span className={styles.destaqueErro}>EMAIL</span> digitado não é válido.</span>}
                 {senha !== confirmation && <span>* As <span className={styles.destaqueErro}>SENHAS</span> digitadas não correspondem.</span>}
+                {(senha === '' || confirmation === '') && <span>* O campo <span className={styles.destaqueErro}>SENHA</span> precisa ser preenchido com um valor válido.</span>}
             </div>
         </ModalAviso>
         <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
@@ -155,7 +169,7 @@ export default function CadastroEmpresa() {
                     placeholder={"Cadastrar"}
                     onClick={() => {
                         if (canSubmit) {
-
+                            handleSubmit();
                         } else {
                             setModalError(true);
                         }
