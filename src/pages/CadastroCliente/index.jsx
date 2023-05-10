@@ -16,6 +16,7 @@ import { MdEmail } from "react-icons/md";
 import ModalAviso from "./../../components/ModalAviso";
 import IconeErro from "../../assets/Icone-Erro.svg";
 import api from "../../services/api";
+import { ToastError, ToastSucess } from "../../utils/Toast";
 
 export default function CadastroEmpresa() {
 
@@ -38,16 +39,20 @@ export default function CadastroEmpresa() {
 
 
     const handleSubmit = async () => {
+        debugger;
+        await api.post("/cliente/cadastro", {
+                name: name,
+                userName: telefone + Math.random(),
+                senha: senha,
+                email: email,
+                telefone: telefone,
+        }).then((response)=>{
+            if(response?.data?.isSucessful) ToastSucess(response?.data?.clientMessage);
+        }).catch((error)=>{
+            ToastError(error?.response.data?.clientMessage);
+        })
 
-        let result = await api.post("/cliente/cadastro", {
-            name: name,
-            userName: telefone + Math.random(),
-            senha: senha,
-            email: email,
-            cpf: 16334765612,
-            telefone: telefone,
-        });
-        result = result.data;
+
 
     }
 
