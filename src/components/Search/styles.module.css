@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    width: 475px;
 }
 
 .containerInput{
@@ -11,8 +10,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: var(--font-color-4);
-    color: var(--font-color-5);
+    background-color: #F0F0F5;
+    color: #B7B7CC;
     border-radius: 0.5rem;
     font-family: "Roboto";
 }
@@ -72,12 +71,3 @@
     background-color: antiquewhite;
 }
 
-@media (max-width:895px){
-   
-    .container{
-        width: 300px;
-        padding-right: 20px;
-    }
-    
-  
-}

@@ -1,31 +1,16 @@
 import styles from "./styles.module.css";
 
-export default function Button({
-  children,
-  isLoading = false,
-  height,
-  width,
-  paddingLeft,
-  text,
-  alternativeStyle,
-  ...rest
-}) {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    //animationData: loadingSvg,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
-
-  return (
-    <div style={{ width: `${width}px`, paddingLeft:  `${paddingLeft}px`}}>
-      <button
-        className={alternativeStyle ? styles.alternative : styles.container}
-        {...rest}
-      >{text}
-      </button>
+export default function Button
+({
+placeholder, 
+alternativeStyle,
+width,
+onClick
+})
+{
+    return <div
+    onClick={onClick} 
+    className={alternativeStyle ? styles.alternative : styles.container}
+    style={{ width: `${width}px` }}> {placeholder}
     </div>
-  );
 }
