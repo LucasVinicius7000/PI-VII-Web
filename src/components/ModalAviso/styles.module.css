@@ -3,20 +3,24 @@
 }
 
 .container {
-    position: absolute;
+    width: 100%;
+    height: 100%;
+    position: fixed;
     top:0;
     border: none;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background: var(--black-02); 
+    background: var(--black-transparent);
+    z-index: 999; 
 }
 
 .content{
     width: 100%;
-    height: 100%;
+    height:100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }

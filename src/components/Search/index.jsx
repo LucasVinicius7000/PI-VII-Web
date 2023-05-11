@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 
-export default function Search({ decoIcon, searchIcon, onSearch, placeholder, value = "", listItemsResult = [], onChange, onClickItemList }) {
+export default function Search({ decoIcon, searchIcon, onSearch, placeholder, value = "", listItemsResult = [], onChange, onClickItemList, width, height, paddingLeft, alignItems, paddingBottom, text }) {
 
     
-    return <div className={styles.container}>
+    return <div className={styles.container} style={{ width: `${width}px`, height: `${height}px`, paddingLeft: `${paddingLeft}px`, alignItems: `${alignItems}px`, paddingBottom: `${paddingBottom}px`}}>
         <div className={styles.containerInput} id={listItemsResult.length > 0 ? styles.borderAdjust : ""}>
             <span id={styles.icon}>{decoIcon}</span>
             <input value={value} placeholder={placeholder} className={styles.input} onChange={onChange}></input>

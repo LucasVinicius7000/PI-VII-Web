@@ -4,10 +4,13 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 //import SolicitaEndereco from "./components/SolicitaEndereco";
+import HomeEmpresa from "./pages/HomeEmpresa";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
 import CadastroProduto from "./pages/CadastroProduto";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -35,11 +38,16 @@ const router = createBrowserRouter([
     path: "/cadastroEmpresa",
     element: <CadastroEmpresa />,
   },
+  {
+    path: "/homeEmpresa",
+    element: <HomeEmpresa />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <UserContextProvider>
     <RouterProvider router={router} />
+    <ToastContainer/>
   </UserContextProvider>
 );

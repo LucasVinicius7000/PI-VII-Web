@@ -1,38 +1,45 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
-  padding-left: 24rem;
+
+  /* padding-left: 24rem */
+}
+
+.containerText{
+  flex-direction: column;
+  display: flex;
+  padding-left: 20rem;
+  padding-top: 5rem;
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
   margin-left: 5rem;
-  margin-top: 6.375rem;
-  gap: 20px;
+  margin-top: 2.175rem;
+
 }
 
 .column {
-  padding: 1rem;
   width: 22rem;
-  height: 18.75rem;
-  background-color: #eee;
+  max-width: 100%;
+  height: 20.75rem;
   border-radius: 8px;
-  margin: 8px;
-  text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-}
 
+}
+.spaced > * {
+  margin-bottom: 1rem;
+}
 .title {
-  font-size: 24px;
-  margin-bottom: 16px;
+  font-size: 20px;
+  margin-top: -10rem;
+  
 }
 
 .input {
-  width: 80% !important;
+  
   padding: 8px;
   font-size: 16px;
   margin-top: 8px;
@@ -45,6 +52,16 @@
   justify-content: center;
   width: 100%;
   margin-top: 2rem;
+  flex-direction: column;
+  padding-left: 28rem;
+  position: absolute;
+  bottom: 18px ;
+  left: '10px'
 }
 
+.container2{
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
 

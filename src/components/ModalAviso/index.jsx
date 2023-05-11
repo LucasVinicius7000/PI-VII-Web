@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import styles from "./styles.module.css";
-
+Modal.setAppElement('#root');
 /*
     ModalAviso: esse componente é um modal com fundo preto transparente que
     usaremos para transmitir mensagens de erro ou sucesso aos usuários.
