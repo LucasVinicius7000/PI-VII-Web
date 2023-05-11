@@ -10,6 +10,7 @@ import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HomeCliente from "./pages/HomeCliente";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     path: "/homeEmpresa",
     element: <HomeEmpresa />,
   },
+  {
+    path: "/homeCliente",
+    element: <HomeCliente/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
