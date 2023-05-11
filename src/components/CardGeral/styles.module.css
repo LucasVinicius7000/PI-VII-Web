@@ -1,6 +1,6 @@
 .container {
     background-color: var(--font-color-4);
-    width: 284px;
+    width: 310px;
     height: 110px;
     border-radius: 9px;
     display: flex;
@@ -33,7 +33,7 @@
     color: var(--black-02);
     margin-bottom: -1rem;
     overflow: hidden;
-    width: 100px;
+    width: 120px;
   }
   #preco {
     font-family: "Roboto";
@@ -42,13 +42,3 @@
     overflow: hidden;
   }
   
-  @media (max-width:895px){
-    .container {
-      width: 85%;
-    }
-    
-    .textos {
-      text-align: center;
-      padding: 0px 10px 0px 0px;
-    }
-  }

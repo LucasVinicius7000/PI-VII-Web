@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    width: 475px;
 }
 
 .containerInput{
@@ -71,3 +72,12 @@
     background-color: antiquewhite;
 }
 
+@media (max-width:895px){
+   
+    .container{
+        width: 300px;
+        padding-right: 20px;
+    }
+    
+  
+}

@@ -1,79 +1,103 @@
-import BackgoundInf from "../../components/BackgroundInf";
-import BackgoundSup from "../../components/BackgroundSup";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import CardCategoria from "../../components/CardCategoria";
-import CardProduto from "../../components/CardProduto";
-import Input from "../../components/Input";
 import Search from "../../components/Search";
-import styles from './styles.module.css';
-import { IoAccessibility } from "react-icons/io5" ;   
+import styles from './styles.module.css'; 
 import CardGeral from "../../components/CardGeral";
+import padaria from "./../../assets/padaria.svg";
+import hortfruti from "./../../assets/hortfruti.svg";
+import acougue from "./../../assets/acougue.svg";
+import bebidas from "./../../assets/bebidas.svg";
+import biscoitos from "./../../assets/biscoitos.svg";
+import enlatados from "./../../assets/enlatados.svg";
+import higiene from "./../../assets/higiene.svg";
+import cereais from "./../../assets/cereais.svg";
+import frios from "./../../assets/frios.svg";
 
 export default function HomeEmpresa() {
   return <>
-    <Header/>    
-    
-    <div className={styles.container}>
-        <Search
-            width={475}
-            paddingLeft={600}
-            paddingBottom={20}
-            placeholder={"Qual produto você procura?"}
+    <Header/>   
+    <div className={styles.search} >
+        <Search type="text"  placeholder="Qual produto você procura?"/>
+    </div>  
+    <div className={styles.butao}>
+        <Button
+            text={"Cadastrar Produto"}
+            width={180}
         />
-        <div className={styles.button}>
-            <Button
-                text={"Cadastrar Produto"}
-                paddingLeft={1400}
-                width={600}
-            />
+    </div>
+    <div className={styles.categorias}>   
+        <h2>Categorias</h2> 
+    </div>
+    <div className={styles.scrollmenu}>
+        <div className={styles.squares}>
+            <a>
+                <CardCategoria
+                    texto={"Padaria"}
+                    image={padaria}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Hortfrutti"}
+                    image={hortfruti}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Açougue"}
+                    image={acougue}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Frios e Laticínio"}
+                    image={frios}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Cereais"}
+                    image={cereais}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Biscoitos"}
+                    image={biscoitos}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Enlatados"}
+                    image={enlatados}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Bebidas"}
+                    image={bebidas}
+                />
+            </a>
+            <a>
+                <CardCategoria
+                    texto={"Higiene e Limpeza"}
+                    image={higiene}
+                />
+            </a>
         </div>
-        <div className={styles.categorias}>     
-            <div className={styles.box}>
-                <h2>Categorias</h2> 
-                <p className={styles.espace}>Ver mais</p>  
-            </div>
-            <br/>     
-            <div className={styles.box}>
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-                <CardCategoria
-                    texto={"Hortfrutti"}
-                />
-            </div>
-        </div>
+    </div>
+    <div className={styles.container}>
         <div className={styles.categorias}>      
             <div className={styles.box}>
                 <h2>Produtos</h2>  
-                <p>Ver mais</p>  
+                <div className={styles.verMais}>
+                    <p>Ver mais</p>
+                </div>
+                  
             </div>
             <br/>     
-            <div className={styles.box}>
+            <div className={styles.infiniteContainer}>
                 <CardGeral
                     titulo={"Morango"}
                     local={" Supermercado Tonin center"}

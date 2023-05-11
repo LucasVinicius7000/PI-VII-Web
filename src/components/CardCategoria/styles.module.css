@@ -13,8 +13,9 @@
 #paragrafo2 {
   font-family: "poppins";
   color: var(--gray-200);
+  font-size: 14px;
   margin: 0px;
-  width: 80%;
+  width: 100%;
   overflow: hidden;
   text-align: center;
 }
