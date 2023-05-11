@@ -92,9 +92,10 @@ export default function HomeEmpresa() {
             <div className={styles.box}>
                 <h2>Produtos</h2>  
                 <div className={styles.verMais}>
-                    <p>Ver mais</p>
-                </div>
-                  
+                    <a href="../produtosCadastrados">
+                        <p>Ver mais</p>
+                    </a>
+                </div>                  
             </div>
             <br/>     
             <div className={styles.infiniteContainer}>

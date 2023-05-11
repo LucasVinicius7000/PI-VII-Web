@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomeCliente from "./pages/HomeCliente";
 import Estabelecimentos from "./pages/Estabelecimentos";
+import ProdutosCadastrados from "./pages/ProdutosCadastrados";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/estabelecimentos",
     element: <Estabelecimentos/>
+  },
+  {
+    path: "/produtosCadastrados",
+    element: <ProdutosCadastrados/>
   }
 ]);
 

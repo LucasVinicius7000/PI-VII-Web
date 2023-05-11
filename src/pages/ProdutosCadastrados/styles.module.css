@@ -3,7 +3,6 @@
     height: 100%; 
     display: flex;
     align-items: center;
-    justify-content: center; 
     flex-direction: column; 
     font-family: 'Poppins';
     background-color: var(--font-color-1);
@@ -11,15 +10,7 @@
 
 .box {
     display : flex;
-}
-
-.box .verMais{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 85%;
-    padding-top: 60px;
+    margin-top: -50px;
 }
 
 .categorias {
@@ -114,7 +105,6 @@
     
     .box .verMais {
         padding-left: 40%;
-        padding-top: 60px;
     }
   .scrollmenu {
     margin-bottom: 60px;
