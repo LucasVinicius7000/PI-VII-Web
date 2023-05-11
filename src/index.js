@@ -11,6 +11,7 @@ import UserContextProvider from "./contexts/userContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomeCliente from "./pages/HomeCliente";
+import Estabelecimentos from "./pages/Estabelecimentos";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/homeCliente",
     element: <HomeCliente/>
+  },
+  {
+    path: "/estabelecimentos",
+    element: <Estabelecimentos/>
   }
 ]);
 

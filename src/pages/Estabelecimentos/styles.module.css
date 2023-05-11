@@ -1,0 +1,137 @@
+.container {
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    font-family: 'Poppins';
+    background-color: var(--font-color-1);
+}
+
+.box {
+    display : flex;
+}
+
+.box .verMais{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 78%
+}
+
+.categorias {
+    padding-left: 30px;
+}
+
+.categorias p {
+    font-size: 16px;
+    color: var(--details-1);
+    padding-top: 5px;
+}
+
+.categorias .espace {
+    padding-left: 70%;
+}
+
+.categorias h2 {
+    font-size: 20px;
+    color: var(--black-02);
+}
+
+.infiniteContainer{
+    width: 100%;
+    height:100%;
+  }
+  
+  .infiniteContainer{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:15px;
+  }
+  .scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    transform-origin: right top;
+    margin-bottom: -160px;
+    margin-left: 20px;
+  }
+
+  .scrollmenu>div {
+    display: block;
+    transform-origin: right top;
+  }
+
+  .scrollmenu a {
+    display: inline-block;
+    color: #8192A3;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    margin-bottom: 13px;
+    margin-right: 12px;
+    transform: translateX(10px);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .scrollmenu a:hover {
+    border-radius: 0.25rem;
+  }
+  .squares {
+    padding: 30px 0 0 0;
+  }
+
+  .squares>div {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:895px){       
+    .box .verMais {
+        padding-left: 18%;
+    }
+  .scrollmenu {
+    margin-bottom: 60px;
+  }
+  
+}
+
+@media(max-width:775px){
+  
+    .infiniteContainer{
+      width: 100%;
+      height:100%;
+    }
+    
+    .infiniteContainer{
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      gap:15px;
+    }
+    .scrollmenu a {
+        display: inline-block;
+        color: #8192A3;
+        text-align: center;
+        padding: 1px;
+        text-decoration: none;
+        margin-bottom: 13px;
+        transform: translateX(10px);
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+}
+
