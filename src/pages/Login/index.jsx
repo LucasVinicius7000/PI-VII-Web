@@ -4,14 +4,9 @@ import DecorationIconsTop from "./../../assets/DecorationIconsTop.svg";
 import DecorationIconsBottom from "./../../assets/DecorationIconsBottom.svg";
 import LocalStoreLogoCadastro from "./../../assets/LocalStoreLogoCadastro.svg";
 import Input from "../../components/Input";
-import IconeUsuario from "./../../assets/IconeUsuario.svg";
 import IconeSenha from "./../../assets/IconeSenha.svg";
 import IconeSenhaComErro from "./../../assets/IconeSenhaComErro.svg";
-import IconFantasia from "./../../assets/IconFantasia.svg";
-import IconCNPJ from "./../../assets/IconCNPJ.svg";
-import IconEndereco from "./../../assets/IconEndereco.svg";
 import IconEmail from "./../../assets/IconEmail.svg";
-import IconTelefone from "./../../assets/IconTelefone.svg";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
@@ -55,20 +50,20 @@ export default function Login() {
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
                 <div className={styles.categorias}>
                     <div className={styles.box}>
-                        <p>Lembrar-me</p>
-                        <p>Esqueci minha senha</p>
+                        {/* <p>Lembrar-me</p> */}
+                        <a>
+                            <p>Esqueci minha senha</p>
+                        </a>
+                        
                     </div>
                 </div>
                 <Button
                   placeholder={"Cadastrar"}
                 />
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+                <div className={styles.box}>
+                <h2>Ainda não possui uma conta? <a>Clique aqui</a></h2>
+                </div>
+                <div className={styles.br}></div>
             </form>
         </section>
 </div>

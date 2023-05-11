@@ -97,6 +97,7 @@ export default function CadastroEmpresa() {
                 <Button
                   placeholder={"Cadastrar"}
                 />
+                <br/>
             </form>
         </section>
 </div>
