@@ -86,9 +86,10 @@ export default function HomeCliente() {
             <div className={styles.box}>
                 <h2>Estabelecimentos</h2>  
                 <div className={styles.verMais}>
-                    <p>Ver mais</p>
-                </div>
-                  
+                    <a href="../estabelecimentos">
+                        <p>Ver mais</p>
+                    </a>
+                </div>                  
             </div>
             <br/>     
             <div className={styles.infiniteContainer}>

@@ -98,6 +98,10 @@
     align-items: center;
 }
 
+a {
+  color: var(--font-color-1);
+}
+
 @media (max-width:895px){       
     .box .verMais {
         padding-left: 18%;
