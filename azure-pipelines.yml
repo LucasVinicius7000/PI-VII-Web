@@ -8,6 +8,7 @@ variables:
 steps:
 - checkout: self
 - script: |
+    git config http.postBuffer 524288000
     git clone https://lucasvinicius7000:$(AzureTokenPAT)@dev.azure.com/lucasvinicius7000/PI%20VII/_git/PI-VII-Web
     cd PI-VII-Web
     git config user.email "$(user_email)"
