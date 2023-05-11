@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import HomeCliente from "./pages/HomeCliente";
 import Estabelecimentos from "./pages/Estabelecimentos";
 import ProdutosCadastrados from "./pages/ProdutosCadastrados";
+import CategoriaEscolhida from "./pages/CategoriaEscolhida";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/produtosCadastrados",
     element: <ProdutosCadastrados/>
+  },
+  {
+    path: "/categoriaEscolhida",
+    element: <CategoriaEscolhida/>
   }
 ]);
 
