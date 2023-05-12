@@ -12,15 +12,15 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
 
 export default function Login() {
-  
-  const [hasError, setHasError] = useState(false);
-  const [passIsVisible, setPassIsVisible] = useState(true);
 
-  return <div className={styles.container}>
-    <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
+    const [hasError, setHasError] = useState(false);
+    const [passIsVisible, setPassIsVisible] = useState(true);
+
+    return <div className={styles.container}>
+        <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
         <img id={styles.iconBottom} alt="Ícones diversos no topo." src={DecorationIconsBottom} />
         <section className={styles.signUpSection}>
-            <img style={{marginTop:"20px"}} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
+            <img style={{ marginTop: "20px" }} src={LocalStoreLogoCadastro} alt="Logo LocalStore." />
             <span>Faça seu login para utilizar a plataforma LocalStore.</span>
             <form className={styles.formulario}>
                 <Input
@@ -50,21 +50,18 @@ export default function Login() {
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
                 <div className={styles.categorias}>
                     <div className={styles.box}>
-                        {/* <p>Lembrar-me</p> */}
                         <a>
                             <p>Esqueci minha senha</p>
                         </a>
-                        
                     </div>
                 </div>
                 <Button
-                  placeholder={"Cadastrar"}
+                    placeholder={"Cadastrar"}
                 />
                 <div className={styles.box}>
-                <h2>Ainda não possui uma conta? <a>Clique aqui</a></h2>
+                    <h2>Ainda não possui uma conta? <a>Clique aqui</a></h2>
                 </div>
-                <div className={styles.br}></div>
             </form>
         </section>
-</div>
+    </div>
 }

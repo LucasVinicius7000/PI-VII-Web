@@ -3,13 +3,14 @@
   height: 100%;
   background-color: var( --details-1);
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: fixed;
 }
 
 p {
     color: var(--font-color-1);
-
 }
 
 .container section{
@@ -20,6 +21,8 @@ p {
 }
 
 .signUpSection{
+  width: 100%;
+  height: auto !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +54,7 @@ p {
 
 .formulario{
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,10 +98,6 @@ p {
 
 .categorias {
     padding-left: 30px;
-}
-
-.br {
-  margin-top: 350px;
 }
 
 @media(max-width:990px){
