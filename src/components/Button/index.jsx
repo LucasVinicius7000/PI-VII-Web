@@ -5,27 +5,16 @@ export default function Button({
   isLoading = false,
   height,
   width,
-  paddingLeft,
   text,
-  alternativeStyle,
   ...rest
 }) {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    //animationData: loadingSvg,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
 
   return (
-    <div style={{ width: `${width}px`, paddingLeft:  `${paddingLeft}px`}}>
-      <button
-        className={alternativeStyle ? styles.alternative : styles.container}
-        {...rest}
-      >{text}
-      </button>
-    </div>
+    <button
+      style={{ width: `${width}`}}
+      className={styles.container}
+      {...rest}
+    >{text}
+    </button>
   );
 }

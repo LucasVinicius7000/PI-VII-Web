@@ -108,7 +108,8 @@ export default function Login() {
                     </div>
                 </div>
                 <Button
-                    text={"Cadastrar"}
+                    width={'100%'}
+                    text={"Login"}
                     onClick={() => {
                         if (!canSubmit) {
                             setModalError(true);
