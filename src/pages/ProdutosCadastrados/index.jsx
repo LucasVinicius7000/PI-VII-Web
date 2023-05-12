@@ -16,7 +16,8 @@ export default function ProdutosCadastrados() {
     <div className={styles.butao}>
         <Button
             text={"Cadastrar Produto"}
-            width={180}
+            width={'180px'}
+            height={'3.75rem'}
         />
     </div>
     <div className={styles.container}>

@@ -11,7 +11,7 @@ export default function Button({
 
   return (
     <button
-      style={{ width: `${width}`}}
+      style={{ width: `${width}`, height: `${height}`}}
       className={styles.container}
       {...rest}
     >{text}
