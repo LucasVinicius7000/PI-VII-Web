@@ -8,6 +8,10 @@ import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HomeCliente from "./pages/HomeCliente";
+import Estabelecimentos from "./pages/Estabelecimentos";
+import ProdutosCadastrados from "./pages/ProdutosCadastrados";
+import CategoriaEscolhida from "./pages/CategoriaEscolhida";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +35,26 @@ const router = createBrowserRouter([
     path: "/cadastroEmpresa",
     element: <CadastroEmpresa />,
   },
+  {
+    path: "/homeEmpresa",
+    element: <HomeEmpresa />,
+  },
+  {
+    path: "/homeCliente",
+    element: <HomeCliente/>
+  },
+  {
+    path: "/estabelecimentos",
+    element: <Estabelecimentos/>
+  },
+  {
+    path: "/produtosCadastrados",
+    element: <ProdutosCadastrados/>
+  },
+  {
+    path: "/categoriaEscolhida",
+    element: <CategoriaEscolhida/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

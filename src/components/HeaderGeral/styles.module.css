@@ -1,0 +1,31 @@
+.container{
+    background-color: var(--details-1);
+    height: 9.25rem;
+    max-height: 9.25rem;
+    width: 100%; 
+    flex-direction: row;
+   
+}
+
+.box {
+    display : flex;
+}
+
+.colun {
+    flex-direction: column;
+    margin-top: -20px;
+    margin-left: 20px;
+}
+
+.imagem {
+    z-index: 999;
+    padding-top: 50px;
+    padding-left: 10px;
+}
+
+
+h2 {
+    padding-top: 60px;
+    color: var(--details-5);
+    font-size: 16px;
+}
