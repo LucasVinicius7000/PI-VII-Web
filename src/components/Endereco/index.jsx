@@ -5,11 +5,13 @@ import { useEffect, useState, useContext } from "react";
 import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/googleMapsApi.js";
 import { UserContext } from "../../contexts/userContext";
 import { v4 as uuidv4 } from 'uuid';
+import HomeCliente from "../../pages/HomeCliente";
+import HomeEmpresa from "../../pages/HomeEmpresa";
 
-export default function Endereco({ children }) {
+export default function Endereco() {
 
 
-    const { userCoordinates, setUserCoordinates } = useContext(UserContext);
+    const { userCoordinates, setUserCoordinates, userRole } = useContext(UserContext);
 
     const [sessionToken, setSessionToken] = useState(uuidv4());
     const [addresses, setAddresses] = useState([]);
@@ -31,12 +33,25 @@ export default function Endereco({ children }) {
         setSessionToken(uuidv4()); // Gera um novo token de sessão
     }
 
+    const choiceHome = () => {
+        if(userRole === 'Admin'){
+            return <HomeCliente/>
+        }
+        else if(userRole === 'Estabelecimento'){
+            return <HomeEmpresa/>
+        }
+        else if(userRole === 'Cliente'){
+            return <HomeCliente/>
+        }
+        else return <div>Nada pra ver aqui..</div>;
+    }
+
     useEffect(() => {
         const firstSearch = async () => {
             await BuscaCoordenadasPorId('', sessionToken);
         }
         firstSearch();
-    },[]);
+    }, []);
 
     const handleStart = () => {
         // Salva as coordenadas no localStorage
@@ -74,7 +89,7 @@ export default function Endereco({ children }) {
             <button><a href="../cliente/cadastro">Cadastro de Cliente</a></button>
             <button><a href="../cadastroEmpresa">Cadastro de Empresa</a></button>
         </div>
-    </div> : children
+    </div> : choiceHome()
 
 
 }

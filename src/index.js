@@ -14,52 +14,61 @@ import Estabelecimentos from "./pages/Estabelecimentos";
 import ProdutosCadastrados from "./pages/ProdutosCadastrados";
 import CategoriaEscolhida from "./pages/CategoriaEscolhida";
 import HomeEmpresa from "./pages/HomeEmpresa";
+import { useEffect } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "./contexts/userContext";
+import Endereco from "./components/Endereco";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />
-      
-  },
-  {
-    path: "/login",
-    element: <Login/>
-  },
-  {
-    path: "/cliente/cadastro",
-    element: <CadastroCliente/>
-  },
-  {
-    path: "/cadastroEmpresa",
-    element: <CadastroEmpresa />,
-  },
-  {
-    path: "/homeEmpresa",
-    element: <HomeEmpresa />,
-  },
-  {
-    path: "/homeCliente",
-    element: <HomeCliente/>
-  },
-  {
-    path: "/estabelecimentos",
-    element: <Estabelecimentos/>
-  },
-  {
-    path: "/categoriaEscolhida",
-    element: <CategoriaEscolhida/>
-  },
-  
-  {
-    path: "/produtosCadastrados",
-    element: <ProdutosCadastrados/>
-  }
-]);
+function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />
+    },
+    {
+      path: "/home",
+      element: <Endereco></Endereco>
+    },
+    {
+      path: "/cliente/cadastro",
+      element: <CadastroCliente />
+    },
+    {
+      path: "/cadastroEmpresa",
+      element: <CadastroEmpresa />,
+    },
+    {
+      path: "/homeEmpresa",
+      element: <HomeEmpresa />,
+    },
+    {
+      path: "/homeCliente",
+      element: <HomeCliente />
+    },
+    {
+      path: "/estabelecimentos",
+      element: <Estabelecimentos />
+    },
+    {
+      path: "/categoriaEscolhida",
+      element: <CategoriaEscolhida />
+    },
+
+    {
+      path: "/produtosCadastrados",
+      element: <ProdutosCadastrados />
+    }
+  ]);
+
+
+  return (
+    <UserContextProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </UserContextProvider>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <UserContextProvider>
-    <RouterProvider router={router} />
-    <ToastContainer/>
-  </UserContextProvider>
-);
+root.render(<App />);
