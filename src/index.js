@@ -36,6 +36,14 @@ const router = createBrowserRouter([
     path: "/cadastroEmpresa",
     element: <CadastroEmpresa />,
   },
+  {
+    path: "/categoriaEscolhida",
+    element: <CategoriaEscolhida/>
+  },
+  {
+    path: "/produtosCadastrados",
+    element: <ProdutosCadastrados/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
