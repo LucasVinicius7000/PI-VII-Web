@@ -6,6 +6,7 @@ export default function Button({
   height,
   width,
   text,
+  onClick,
   ...rest
 }) {
 
@@ -13,6 +14,7 @@ export default function Button({
     <button
       style={{ width: `${width}`, height: `${height}`}}
       className={styles.container}
+      onClick={onClick}
       {...rest}
     >{text}
     </button>
