@@ -11,12 +11,12 @@ export default function Button({
 }) {
 
   return (
-    <button
+    <div
       style={{ width: `${width}`, height: `${height}`}}
       className={styles.container}
       onClick={onClick}
       {...rest}
     >{text}
-    </button>
+    </div>
   );
 }

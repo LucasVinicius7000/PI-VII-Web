@@ -44,7 +44,7 @@ export default function Login() {
                 let role = response?.data?.data?.role;
                 setUserToken(token);
                 setUserRole(role);
-                navigate("/home");
+                //navigate("/home");
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {
             ToastError(error.response?.data?.clientMessage);
@@ -111,6 +111,7 @@ export default function Login() {
                     width={'100%'}
                     text={"Login"}
                     onClick={() => {
+                        debugger;
                         if (!canSubmit) {
                             setModalError(true);
                         } else {

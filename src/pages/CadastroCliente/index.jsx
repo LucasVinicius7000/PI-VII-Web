@@ -41,6 +41,7 @@ export default function CadastroEmpresa() {
 
 
     const handleSubmit = async () => {
+        debugger;
         await api.post("/cliente/cadastro", {
                 name: name,
                 userName: telefone + Math.random(),
