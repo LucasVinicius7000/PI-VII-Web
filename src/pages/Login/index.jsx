@@ -44,7 +44,7 @@ export default function Login() {
                 let role = response?.data?.data?.role;
                 setUserToken(token);
                 setUserRole(role);
-                //navigate("/home");
+                navigate("/home");
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {
             ToastError(error.response?.data?.clientMessage);
