@@ -181,8 +181,8 @@ export default function CadastroEmpresa() {
                         }
                     }}
                 />
-                <br></br>
             </form>
+            <p className={styles.brr}></p>
         </section>
     </div>
 }

@@ -54,6 +54,10 @@
     align-items: center;
     gap:0.5rem;
   }
+
+  .brr {
+    margin-top: 250px;
+  }
   
   #unequalPass{
     text-align:center;
@@ -102,4 +106,9 @@
     .signUpSection > span {
         width: 80%;
     }
+    
+  .brr {
+    margin-top: 10px;
+  }
+
   }

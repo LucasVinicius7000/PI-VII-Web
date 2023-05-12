@@ -7,6 +7,11 @@
   align-items: center;
 }
 
+p {
+    color: var(--font-color-1);
+
+}
+
 .container section{
   width: 27.5rem;
   min-width: 14rem;
@@ -66,6 +71,35 @@
   align-self: start;
 }
 
+.box {
+    display : flex;
+}
+
+.box p {
+  color: var(--font-color-2);
+  margin-left: 250px;
+  font-size: 14px;
+}
+
+.box h2 {
+  color: var(--font-color-2);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.box a {
+  color: var(--font-color-3);
+
+}
+
+.categorias {
+    padding-left: 30px;
+}
+
+.br {
+  margin-top: 350px;
+}
+
 @media(max-width:990px){
   .container section{
       width: 80%;
@@ -75,5 +109,18 @@
 @media(max-width:500px){
   .signUpSection > span {
       width: 80%;
+  }
+  
+  .box p {  
+    margin-left: 120px;
+    font-size: 14px;
+  }
+
+  .box h2 {
+    font-size: 14px;
+  }
+  
+  .br {
+    margin-top: 70px;
   }
 }
