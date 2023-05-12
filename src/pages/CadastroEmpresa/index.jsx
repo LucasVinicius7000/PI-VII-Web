@@ -95,7 +95,7 @@ export default function CadastroEmpresa() {
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
 
                 <Button
-                    placeholder={"Cadastrar"}
+                    text={"Cadastrar"}
                 />
                 <br />
             </form>

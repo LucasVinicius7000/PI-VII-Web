@@ -175,7 +175,7 @@ export default function CadastroEmpresa() {
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
                 {invalidEmail && <span id={styles.unequalPass}>*O email digitado não é valido.</span>}
                 <Button
-                    placeholder={"Cadastrar"}
+                    text={"Cadastrar"}
                     onClick={() => {
                         if (canSubmit) {
                             handleSubmit();
