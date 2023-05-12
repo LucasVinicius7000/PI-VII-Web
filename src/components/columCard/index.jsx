@@ -1,33 +1,28 @@
 import QuadroClicavel from '../cardRegister';
 import styles from './styles.module.css';
 import Button from '../Button';
+import DropdownProduct from '../Dropdown';
+import { Any } from 'react-spring';
+import React from "react";
 
-export default function CombinedComponent({ texto }) {
+export default function CombinedComponent({  titulo, componentes = []}) {
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <QuadroClicavel texto={texto} />
+    // <div className={styles.container}>
+    //   <div className={styles.wrapper}>
+   
+        <div>
+          <h2 className={styles.title}>{titulo}</h2>
         <div className={styles.column}>
-          <h2 className={styles.title}>Detalhes do Produto</h2>
-          <input className={styles.input} type="text" placeholder="Input 1" />
-          <input className={styles.input} type="text" placeholder="Input 2" />
-          <input className={styles.input} type="text" placeholder="Input 3" />
-          <input className={styles.input} type="text" placeholder="Input 4" />
-          <input className={styles.input} type="text" placeholder="Input 5" />
+          {componentes.map((component, index) => (
+            <React.Fragment key={index}>
+              {component}
+            </React.Fragment>
+          ))}
         </div>
-        <div className={styles.column}>
-          <h2 className={styles.title}>Estoque</h2>
-          <input className={styles.input} type="text" placeholder="Input 1" />
-          <input className={styles.input} type="text" placeholder="Input 2" />
-          <input className={styles.input} type="text" placeholder="Input 3" />
-          <input className={styles.input} type="text" placeholder="Input 4" />
-          <input className={styles.input} type="text" placeholder="Input 5" />
-        </div>
-      </div>
-
-      <div className={styles.buttonWrapper}>
-        <Button placeholder={"Cadastrar Produto"} width={450} />
-      </div>
-    </div>
+          
+          </div>
+        
+      // </div>
+          // </div>
   );
 }

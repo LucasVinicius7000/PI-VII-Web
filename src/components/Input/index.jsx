@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 
 export default function Input
     ({
-        startIcon,
+        startIcon,   
         placeholder,
         endIcon,
         onChange,
