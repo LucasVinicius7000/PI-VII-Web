@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CadastroEmpresa() {
 
+    const navigate = useNavigate();
     const [hasError, setHasError] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(undefined);
     const [passIsVisible, setPassIsVisible] = useState(true);
@@ -47,7 +48,10 @@ export default function CadastroEmpresa() {
                 email: email,
                 telefone: telefone,
         }).then((response)=>{
-            if(response?.data?.isSucessful) ToastSucess(response?.data?.clientMessage);
+            if(response?.data?.isSucessful){
+                ToastSucess(response?.data?.clientMessage);
+                navigate("/");
+            }
         }).catch((error)=>{
             ToastError(error?.response.data?.clientMessage);
         })
