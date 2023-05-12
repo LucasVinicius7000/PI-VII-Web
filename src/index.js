@@ -13,6 +13,7 @@ import HomeCliente from "./pages/HomeCliente";
 import Estabelecimentos from "./pages/Estabelecimentos";
 import ProdutosCadastrados from "./pages/ProdutosCadastrados";
 import CategoriaEscolhida from "./pages/CategoriaEscolhida";
+import HomeEmpresa from "./pages/HomeEmpresa";
 
 const router = createBrowserRouter([
   {
@@ -29,17 +30,26 @@ const router = createBrowserRouter([
     element: <CadastroCliente/>
   },
   {
-    path: "/estabelecimento/cadastro",
-    element: <div>Tela de cadastro do estabelecimento deve vir aqui</div>
-  },
-  {
     path: "/cadastroEmpresa",
     element: <CadastroEmpresa />,
+  },
+  {
+    path: "/homeEmpresa",
+    element: <HomeEmpresa />,
+  },
+  {
+    path: "/homeCliente",
+    element: <HomeCliente/>
+  },
+  {
+    path: "/estabelecimentos",
+    element: <Estabelecimentos/>
   },
   {
     path: "/categoriaEscolhida",
     element: <CategoriaEscolhida/>
   },
+  
   {
     path: "/produtosCadastrados",
     element: <ProdutosCadastrados/>
