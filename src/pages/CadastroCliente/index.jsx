@@ -50,7 +50,7 @@ export default function CadastroEmpresa() {
         }).then((response)=>{
             if(response?.data?.isSucessful){
                 ToastSucess(response?.data?.clientMessage);
-                navigate("/login");
+                navigate("/");
             }
         }).catch((error)=>{
             ToastError(error?.response.data?.clientMessage);
