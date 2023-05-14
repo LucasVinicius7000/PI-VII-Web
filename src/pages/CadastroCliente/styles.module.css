@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
   }
   
   .container section{
@@ -53,6 +54,10 @@
     justify-content: center;
     align-items: center;
     gap:0.5rem;
+  }
+
+  .brr {
+    margin-top: 250px;
   }
   
   #unequalPass{
@@ -102,4 +107,9 @@
     .signUpSection > span {
         width: 80%;
     }
+    
+  .brr {
+    margin-top: 10px;
+  }
+
   }

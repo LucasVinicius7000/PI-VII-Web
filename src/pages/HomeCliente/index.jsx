@@ -14,18 +14,12 @@ import higiene from "./../../assets/higiene.svg";
 import cereais from "./../../assets/cereais.svg";
 import frios from "./../../assets/frios.svg";
 
-export default function HomeEmpresa() {
+export default function HomeCliente() {
   return <>
     <Header/>   
     <div className={styles.search} >
         <Search type="text"  placeholder="Qual produto você procura?"/>
     </div>  
-    <div className={styles.butao}>
-        <Button
-            text={"Cadastrar Produto"}
-            width={180}
-        />
-    </div>
     <div className={styles.categorias}>   
         <h2>Categorias</h2> 
     </div>
@@ -90,9 +84,9 @@ export default function HomeEmpresa() {
     <div className={styles.container}>
         <div className={styles.categorias}>      
             <div className={styles.box}>
-                <h2>Produtos</h2>  
+                <h2>Estabelecimentos</h2>  
                 <div className={styles.verMais}>
-                    <a href="../produtosCadastrados">
+                    <a href="../estabelecimentos">
                         <p>Ver mais</p>
                     </a>
                 </div>                  
@@ -100,29 +94,28 @@ export default function HomeEmpresa() {
             <br/>     
             <div className={styles.infiniteContainer}>
                 <CardGeral
-                    titulo={"Morango"}
-                    local={" Supermercado Tonin center"}
-                    preco={8.99}
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
                 />
                 <CardGeral
-                    titulo={"Morango"}
-                    local={" Supermercado Tonin center"}
-                    preco={8.99}
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
                 />
                 <CardGeral
-                    titulo={"Morango"}
-                    local={" Supermercado Tonin center"}
-                    preco={8.99}
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
                 />
                 <CardGeral
-                    titulo={"Morango"}
-                    local={" Supermercado Tonin center"}
-                    preco={8.99}
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
                 />
                 <CardGeral
-                    titulo={"Morango"}
-                    local={" Supermercado Tonin center"}
-                    preco={8.99}
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
+                />
+                <CardGeral
+                    titulo={"Master Supermecados"}
+                    local={"Rua tal tal, n°123, bairro  Santo Antornio"}
                 />
             </div>
         </div>

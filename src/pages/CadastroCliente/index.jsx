@@ -17,9 +17,11 @@ import ModalAviso from "./../../components/ModalAviso";
 import IconeErro from "../../assets/Icone-Erro.svg";
 import api from "../../services/api";
 import { ToastError, ToastSucess } from "../../utils/Toast";
+import { useNavigate } from "react-router-dom";
 
 export default function CadastroEmpresa() {
 
+    const navigate = useNavigate();
     const [hasError, setHasError] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(undefined);
     const [passIsVisible, setPassIsVisible] = useState(true);
@@ -47,7 +49,10 @@ export default function CadastroEmpresa() {
                 email: email,
                 telefone: telefone,
         }).then((response)=>{
-            if(response?.data?.isSucessful) ToastSucess(response?.data?.clientMessage);
+            if(response?.data?.isSucessful){
+                ToastSucess(response?.data?.clientMessage);
+                navigate("/");
+            }
         }).catch((error)=>{
             ToastError(error?.response.data?.clientMessage);
         })
@@ -171,7 +176,8 @@ export default function CadastroEmpresa() {
                 {hasError && <span id={styles.unequalPass}>*As senhas digitadas não correspondem.</span>}
                 {invalidEmail && <span id={styles.unequalPass}>*O email digitado não é valido.</span>}
                 <Button
-                    placeholder={"Cadastrar"}
+                    width={'100%'}
+                    text={"Cadastrar"}
                     onClick={() => {
                         if (canSubmit) {
                             handleSubmit();
@@ -180,8 +186,8 @@ export default function CadastroEmpresa() {
                         }
                     }}
                 />
-                <br></br>
             </form>
+            <p className={styles.brr}></p>
         </section>
     </div>
 }

@@ -18,8 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 85%;
-    padding-top: 60px;
+    padding-left: 78%
 }
 
 .categorias {
@@ -99,22 +98,13 @@
     align-items: center;
 }
 
-.butao {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 78%;
+a {
+  color: var(--font-color-1);
 }
 
-@media (max-width:895px){
-    .butao {
-      padding-left: 30%;
-    }
-    
+@media (max-width:895px){       
     .box .verMais {
-        padding-left: 40%;
-        padding-top: 60px;
+        padding-left: 18%;
     }
   .scrollmenu {
     margin-bottom: 60px;
