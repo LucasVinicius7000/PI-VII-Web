@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './styles.module.css';
 
-export default function DropdownProduct({ options, onSelect, placeholder }) {
+export default function DropdownProduct({ options, onSelect, placeholder, width, height }) {
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState({ label: placeholder });
+
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -13,11 +16,25 @@ export default function DropdownProduct({ options, onSelect, placeholder }) {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <div className={styles.dropdowncontainer}>
+    <div ref={dropdownRef} className={styles.dropdowncontainer} style={{ width, height }}>
       <div className={styles.dropdownheader} onClick={toggleDropdown}>
         <span>{selectedOption.label}</span>
-        <i className={`fas fa-caret-${isOpen ? 'up' : 'down'}`} onClick={toggleDropdown}></i>
+        <div className={styles.arrow} onClick={toggleDropdown}></div>
       </div>
       {isOpen && (
         <ul className={styles.dropdownmenu}>
