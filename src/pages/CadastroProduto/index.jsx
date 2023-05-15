@@ -17,11 +17,12 @@ export default function CadastroProduto() {
       />
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <div className={styles.square}>
+          <div className={styles.square} id="square">
             <h2>Cadastrar Produto</h2>
-          <QuadroClicavel texto={"Insira uma Imagem"} />
+            <QuadroClicavel texto={"Insira uma Imagem"} />
           </div>
           <CombinedComponent
+            id={styles.combinedComponent2}
             componentes={[
               <Input type="text" id="Input1" name="fname" placeholder={"Nome"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
               <Input type="text" id="Input2" name="fname" placeholder={"Marca"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
@@ -44,6 +45,7 @@ export default function CadastroProduto() {
             ]} titulo="Detalhes do Produto"
           />
           <CombinedComponent
+            id={styles.combinedComponent2}
             componentes={[
               <InputNumber titleInput="Quantidade Disponível" />,
               <Input type="text" id="Input2" name="fname" placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,

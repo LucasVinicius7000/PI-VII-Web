@@ -1,13 +1,13 @@
 .container {
-    background-color: #fff;
-    max-width: 99vw;
-    width: 100%;
-    height: auto;
-    color: #3D3D4C; 
+  background-color: #fff;
+  max-width: 99vw;
+  width: 100%;
+  height: auto;
+  color: #3D3D4C;
 }
 
-.wrapper{
-  margin:0 4.375rem;
+.wrapper {
+  margin: 0 4.375rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -15,23 +15,41 @@
   flex-wrap: wrap;
 }
 
-.square{
+.square {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
 }
 
-.square h2{
+.square h2 {
   font-size: 1.25rem;
   padding-left: 0.5rem;
   color: inherit;
 }
 
-.buttonArea{
+.buttonArea {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+@media(max-width:500px) {
+  .buttonArea {
+    padding: 0 15% 0 15%;
+    width: 70% !important;
+  }
+
+  .wrapper{
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #combinedComponent2{
+    max-width: 100%;
+  }
 }

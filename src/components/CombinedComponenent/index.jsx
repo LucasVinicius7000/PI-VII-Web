@@ -4,9 +4,9 @@ import DropdownProduct from '../Dropdown';
 import { Any } from 'react-spring';
 import React from "react";
 
-export default function CombinedComponent({ titulo, componentes = [] }) {
+export default function CombinedComponent({ titulo, componentes = [], id }) {
   return (
-    <div>
+    <div id={id}>
       <h2 className={styles.title}>{titulo}</h2>
       <div className={styles.column}>
         {componentes.map((component, index) => (
