@@ -1,11 +1,12 @@
 .card {
-    position: absolute;
+    max-width: 20.4375rem;
     width: 20.4375rem;
+    min-height: 11.125rem;
     height: 20.5625rem;
     left: 4.25rem;
     top: 16.1875rem;
     background: #ffb84d;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: box-shadow 0.2s ease-in-out;
     display: flex;
@@ -18,9 +19,11 @@
 }
 
 .texto {
-    /* ... */
+    font-weight: 400;
+    color: var(--black-01);
     text-align: center;
 }
+
 .column {
     border-radius: 8px;
     margin: 8px;
@@ -29,4 +32,13 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-  }
+}
+
+.imagem{
+    border-radius: 0.5rem;
+}
+
+@media(max-width:500px) {
+
+
+}

@@ -9,7 +9,7 @@ export default function Input({
   hasError,
   passwordIsShowing = true,
   width,
-  height, //nova prop de altura
+  height,
   backgroundColor
 }) {
   const containerClassName = hasError ? styles.containerError : styles.container;
@@ -25,6 +25,7 @@ export default function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        className={styles.input}
         id={hasError && styles.inputError}
         style={{ backgroundColor: backgroundColor }}
       />

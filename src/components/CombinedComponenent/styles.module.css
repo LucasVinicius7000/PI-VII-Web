@@ -1,8 +1,4 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 24rem;
-}
+
 
 .wrapper {
   display: flex;
@@ -13,19 +9,11 @@
 }
 
 .title {
+  color: #3D3D4C; 
   font-size: 24px;
   margin-bottom: 16px;
 }
 
-.input {
-  width: 80% !important;
-  padding: 8px;
-  font-size: 16px;
-  margin-top: 8px;
-  border: none;
-  border-radius: 4px;
-  
-}
 
 .buttonWrapper {
   display: flex;
@@ -35,11 +23,10 @@
 
 }
 
-/*  */
-
 .column {
-  width: 22rem;
-  height: 18.75rem;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
   border-radius: 8px;
   text-align: center;
   display: flex;

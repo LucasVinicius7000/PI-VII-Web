@@ -3,7 +3,7 @@
   width: 22rem;
   background-color: inherit;
   color: #BEBCCC;
-  margin-bottom: 5px;
+  margin-bottom: 0.55rem;
 }
 
 .dropdownheader {
@@ -30,8 +30,15 @@
   background-color: #e2e2e2;
 }
 
+.dropdownheader > span {
+  color: var(--gray-200);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 .dropdownmenu {
   position: absolute;
+  height: 12rem !important;
   align-items: center;
   top: 100%;
   width: 97%;
@@ -45,10 +52,11 @@
   transform: translateX(-50%);
   max-width: 100%;
   overflow-y: auto;
-  max-height: 6rem;
+  color: var(--gray-200);
 }
 
 .dropdownmenu li {
+  color: inherit;
   padding: 10px;
   list-style: none;
   cursor: pointer;
@@ -56,4 +64,24 @@
 
 .dropdownmenu li:hover {
   background-color: #f1f1f1;
+}
+
+.dropdownmenu::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.dropdownmenu::-webkit-scrollbar-button {
+  background-color: #ccc; 
+}
+
+.dropdownmenu::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+}
+
+.dropdownmenu::-webkit-scrollbar-thumb {
+  background-color: #888; 
+}
+
+.dropdownmenu::-webkit-scrollbar-corner {
+  background-color: #ccc; 
 }

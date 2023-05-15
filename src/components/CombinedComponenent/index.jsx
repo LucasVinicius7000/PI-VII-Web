@@ -6,9 +6,6 @@ import React from "react";
 
 export default function CombinedComponent({ titulo, componentes = [] }) {
   return (
-    // <div className={styles.container}>
-    //   <div className={styles.wrapper}>
-
     <div>
       <h2 className={styles.title}>{titulo}</h2>
       <div className={styles.column}>
@@ -20,9 +17,6 @@ export default function CombinedComponent({ titulo, componentes = [] }) {
       </div>
 
     </div>
-
-    // </div>
-    // </div>
   );
 
 }

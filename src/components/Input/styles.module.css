@@ -49,5 +49,15 @@
 }
 
 #inputError{
-    color:#E03E1A;
+    color:#E03E1A !important;
 }
+
+.input::placeholder{
+    color: var(--gray-200) !important;
+    font-weight: 500;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+

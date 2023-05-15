@@ -55,10 +55,13 @@ function App() {
       path: "/categoriaEscolhida",
       element: <CategoriaEscolhida />
     },
-
     {
       path: "/produtosCadastrados",
       element: <ProdutosCadastrados />
+    },
+    {
+      path: "/empresa/produto/cadastro",
+      element: <CadastroProduto/>
     }
   ]);
 
