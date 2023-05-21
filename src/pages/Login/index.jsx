@@ -21,7 +21,7 @@ export default function Login() {
 
     let { setUserToken, setUserRole } = useContext(UserContext);
     const [hasError, setHasError] = useState(false);
-    const [passIsVisible, setPassIsVisible] = useState(true);
+    const [passIsVisible, setPassIsVisible] = useState(false);
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
     const [modalError, setModalError] = useState(false);
@@ -77,15 +77,18 @@ export default function Login() {
                 <Input
                     hasError={hasError}
                     placeholder={"Senha "}
+                    passwordIsShowing={passIsVisible}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
-                                style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
-                                style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             />
                     }
                     onChange={(e) => {
