@@ -7,14 +7,15 @@ export default function InputNumber({ titleInput }) {
   const [inputValue, setInputValue] = useState(0);
 
   const handleInputChange = (event) => {
-    const newValue = parseInt(event.target.value, 10);
+    debugger;
+    const newValue = parseInt(event.target.value);
     if (!isNaN(newValue) && newValue >= 0) {
       setInputValue(newValue);
-
-    }
+    } else setInputValue(0);
   };
 
   const handleIncrementClick = () => {
+    debugger;
     const newValue = inputValue + 1;
     setInputValue(newValue);
 
@@ -27,26 +28,14 @@ export default function InputNumber({ titleInput }) {
     }
   };
 
-  const handleInputKeyDown = (event) => {
-    if (event.key === 'Delete' && event.target.selectionStart === 0 && event.target.selectionEnd === event.target.value.length) {
-      setInputValue('');
-    }
-  };
 
-  const handleInputFocus = (event) => {
-    event.target.select();
-  };
-
-  InputNumber.propTypes = {
-    value: PropTypes.number.isRequired,
-  };
 
   return (
     <div className={styles.container} id="containerError">
       <span>{titleInput}</span>
       <div className={styles.inputArea}>
         <button className={styles.btn} onClick={handleDecrementClick}>
-          <FaMinus />
+          <FaMinus size={16} />
         </button>
         <input
           type="number"
@@ -54,12 +43,10 @@ export default function InputNumber({ titleInput }) {
           value={inputValue}
           placeholder='Quantidade em estoque'
           onChange={handleInputChange}
-          onKeyDown={handleInputKeyDown}
-          onFocus={handleInputFocus}
-          min={0} // adiciona o atributo min para bloquear a entrada de números negativos
+          min={0}
         />
         <button className={styles.btn} onClick={handleIncrementClick}>
-          <FaPlus />
+          <FaPlus size={16} />
         </button>
       </div>
       <div className={styles.verticalDeco}></div>

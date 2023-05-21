@@ -31,7 +31,7 @@ export default function DropdownProduct({ options, onSelect, placeholder, width,
   }, []);
 
   return (
-    <div ref={dropdownRef} className={styles.dropdowncontainer} style={{ width, height }}>
+    <div ref={dropdownRef} className={styles.dropdowncontainer} style={{ height, width: width ? width : undefined }}>
       <div className={styles.dropdownheader} onClick={toggleDropdown}>
         <span>{selectedOption.label}</span>
         <div className={styles.arrow} onClick={toggleDropdown}></div>

@@ -8,7 +8,6 @@
     justify-items: center;
     flex-direction: row;
     padding: 0 1rem;
-    margin-bottom: 0.6rem;
 }
 
 
@@ -19,7 +18,7 @@
     height:100%;
     border-radius: inherit;
     font-size: 1rem;
-    color: #BEBCCC;
+    color: #464647;
     font-weight: 700;
     border: none;
     outline: none;
@@ -33,7 +32,7 @@
 
 .container > input::placeholder{
     background-color: inherit;
-    color: #BEBCCC;
+    color: #b1b0bb;
 }
 
 .verticalDeco{
@@ -49,15 +48,5 @@
 }
 
 #inputError{
-    color:#E03E1A !important;
+    color:#E03E1A;
 }
-
-.input::placeholder{
-    color: var(--gray-200) !important;
-    font-weight: 500;
-}
-
-.input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-}
-

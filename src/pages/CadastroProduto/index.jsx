@@ -7,8 +7,13 @@ import QuadroClicavel from '../../components/QuadroClicavel';
 import Input from '../../components/Input';
 import DropdownProduct from "../../components/Dropdown";
 import InputNumber from "../../components/InputNumber";
+import { useState } from "react";
+
 
 export default function CadastroProduto() {
+
+  const [categoria, setCategoria] = useState(null);
+
   return (
     <>
       <HeaderGeral
@@ -22,12 +27,14 @@ export default function CadastroProduto() {
             <QuadroClicavel texto={"Insira uma Imagem"} />
           </div>
           <CombinedComponent
+            width={"23rem"}
             id={styles.combinedComponent2}
             componentes={[
-              <Input type="text" id="Input1" name="fname" placeholder={"Nome"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" id="Input2" name="fname" placeholder={"Marca"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" id="Input3" name="fname" placeholder={"Peso"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <DropdownProduct width={"21rem"} height={"3.2rem"} options={[
+              <Input type="text" placeholder={"Nome"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Marca"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Peso"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <DropdownProduct height={"3.2rem"}
+                options={[
                 { value: '0', label: 'Hortifruti' },
                 { value: '1', label: 'Padaria' },
                 { value: '2', label: 'Açougue' },
@@ -35,23 +42,23 @@ export default function CadastroProduto() {
                 { value: '4', label: 'Cereais' },
                 { value: '5', label: 'Biscoitos' },
                 { value: '6', label: 'Enlatadados' },
-                { value: '7', label: 'Enlatados' },
-                { value: '8', label: 'Bebidas' },
-                { value: '9', label: 'Higiene e Limpeza' },
+                { value: '7', label: 'Bebidas' },
+                { value: '8', label: 'Higiene e Limpeza' },
               ]} placeholder={"Categoria"}
-                onSelect={(option) => console.log(`Você selecionou a opção: ${option.label}`)}
+                onSelect={(option) => setCategoria(option.target.value)}
               />,
-              <Input type="date" id="Input5" name="fname" placeholder={"Data de Validade"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />,
+              <Input type="date" placeholder={"Data de Validade"} height={"3.0rem"} backgroundColor={"#eee"} />,
             ]} titulo="Detalhes do Produto"
           />
           <CombinedComponent
+            width={"23rem"}
             id={styles.combinedComponent2}
             componentes={[
               <InputNumber titleInput="Quantidade Disponível" />,
-              <Input type="text" id="Input2" name="fname" placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" id="Input3" name="fname" placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" id="Input5" name="fname" placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />,
-              <Input type="text" id="Input1" name="fname" placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />,
+              <Input type="text" placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
             ]} titulo="Estoque"
           />
         </div>

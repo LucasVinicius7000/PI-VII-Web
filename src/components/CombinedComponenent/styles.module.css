@@ -1,15 +1,10 @@
-
-
 .wrapper {
   display: flex;
   justify-content: center;
-  margin-left: 5rem;
-  margin-top: 6.375rem;
-  
 }
 
 .title {
-  color: #3D3D4C; 
+  color: #3D3D4C;
   font-size: 24px;
   margin-bottom: 16px;
 }
@@ -19,18 +14,16 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2rem;
-
+  margin-top: 3rem;
 }
 
 .column {
   width: 100%;
-  max-width: 22rem;
   height: auto;
   border-radius: 8px;
-  text-align: center;
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 0.7rem;
 }
