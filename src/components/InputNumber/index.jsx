@@ -3,28 +3,29 @@ import PropTypes from 'prop-types';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import styles from './styles.module.css';
 
-export default function InputNumber({ titleInput }) {
+export default function InputNumber({ titleInput, setValue }) {
   const [inputValue, setInputValue] = useState(0);
 
   const handleInputChange = (event) => {
-    debugger;
     const newValue = parseInt(event.target.value);
     if (!isNaN(newValue) && newValue >= 0) {
       setInputValue(newValue);
-    } else setInputValue(0);
+    } else {
+      setInputValue(0);
+    };
   };
 
   const handleIncrementClick = () => {
-    debugger;
     const newValue = inputValue + 1;
     setInputValue(newValue);
-
+    setValue(newValue);
   };
 
   const handleDecrementClick = () => {
     const newValue = inputValue - 1;
     if (newValue >= 0) {
       setInputValue(newValue);
+      setValue(newValue);
     }
   };
 

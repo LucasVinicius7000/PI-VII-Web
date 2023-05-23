@@ -9,7 +9,8 @@ export default function Input
     value,
     hasError,
     passwordIsShowing = true,
-    backgroundColor
+    backgroundColor,
+    onlyNumbers = false
   }) {
 
   return <div
@@ -20,7 +21,7 @@ export default function Input
     {startIcon}
     {startIcon && <div className={styles.verticalDeco}></div>}
     <input
-      type={passwordIsShowing ? "text" : "password"}
+      type={onlyNumbers ? "number" : passwordIsShowing ? "text" : "password"}
       value={value}
       onChange={onChange}
       placeholder={placeholder}

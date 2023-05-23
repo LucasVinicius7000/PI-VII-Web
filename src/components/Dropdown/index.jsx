@@ -33,14 +33,16 @@ export default function DropdownProduct({ options, onSelect, placeholder, width,
   return (
     <div ref={dropdownRef} className={styles.dropdowncontainer} style={{ height, width: width ? width : undefined }}>
       <div className={styles.dropdownheader} onClick={toggleDropdown}>
-        <span>{selectedOption.label}</span>
+        <span style={{ color: !(placeholder === selectedOption.label ) ? "#464647" : undefined }}>{selectedOption.label}</span>
         <div className={styles.arrow} onClick={toggleDropdown}></div>
       </div>
       {isOpen && (
         <ul className={styles.dropdownmenu}>
           {options.map((option) => (
             option.label !== placeholder && (
-              <li key={option.value} onClick={() => handleOptionClick(option)}>
+              <li
+                key={option.value}
+                onClick={() => handleOptionClick(option)}>
                 {option.label}
               </li>
             )

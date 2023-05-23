@@ -28,9 +28,9 @@
 }
 
 .dropdownheader > span {
-  color: #b1b0bb;
+  color: var(--font-color-6);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .dropdownmenu {

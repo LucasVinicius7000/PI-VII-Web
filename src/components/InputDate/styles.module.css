@@ -1,0 +1,21 @@
+.picker{
+    width: 92%;
+    height: 3.2rem;
+    outline: none;
+    border: none;
+    background-color: #EEEEEE;
+    border-radius: 15px;
+    padding: 0 2rem;
+    cursor: pointer;
+    position: relative;
+    left:-1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color:#464647;
+}
+
+.picker::placeholder{
+    font-size: 1rem;
+    color:var(--font-color-6);;
+}
+

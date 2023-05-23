@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import Search from "../Search";
 import { BsGeoAlt, BsSearch } from "react-icons/bs";
 import { useEffect, useState, useContext } from "react";
-import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/googleMapsApi.js";
+import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/GoogleMapsApi.js";
 import { UserContext } from "../../contexts/userContext";
 import { v4 as uuidv4 } from 'uuid';
 import HomeCliente from "../../pages/HomeCliente";

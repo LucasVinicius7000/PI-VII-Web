@@ -12,7 +12,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
 import ModalAviso from "../../components/ModalAviso";
 import IconeErro from "./../../assets/Icone-Erro.svg";
-import api from "./../../services/api";
+import api from "./../../services/Api";
 import { ToastError, ToastSucess } from "../../utils/Toast";
 import { UserContext } from "../../contexts/userContext";
 import { useNavigate } from "react-router-dom";
@@ -114,7 +114,6 @@ export default function Login() {
                     width={'100%'}
                     text={"Login"}
                     onClick={() => {
-                        debugger;
                         if (!canSubmit) {
                             setModalError(true);
                         } else {
