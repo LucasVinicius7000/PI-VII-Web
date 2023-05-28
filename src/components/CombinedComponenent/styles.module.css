@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
+  color: #3D3D4C;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.column {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 0.7rem;
+}

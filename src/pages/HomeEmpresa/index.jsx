@@ -13,8 +13,14 @@ import enlatados from "./../../assets/enlatados.svg";
 import higiene from "./../../assets/higiene.svg";
 import cereais from "./../../assets/cereais.svg";
 import frios from "./../../assets/frios.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeEmpresa() {
+
+  const navigate = useNavigate();
+
+  
+
   return <>
     <Header/>   
     <div className={styles.search} >
@@ -24,6 +30,7 @@ export default function HomeEmpresa() {
         <Button
             text={"Cadastrar Produto"}
             width={180}
+            onClick={()=>{ navigate("/empresa/produto/cadastro") }}
         />
     </div>
     <div className={styles.categorias}>   

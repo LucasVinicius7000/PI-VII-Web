@@ -1,0 +1,82 @@
+.container {
+  box-sizing: border-box !important;
+  width: 110%;
+  height: 3.2rem;
+  background-color: #EEEEEE;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+  flex-direction: row;
+  padding: 0 2rem;
+  margin-bottom: 8px;
+}
+
+.container:first-child {
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
+  color: var(--font-color-6) !important;
+  font-weight: 700;
+}
+
+.inputArea {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  gap: 0rem;
+  text-align: center;
+}
+
+.input {
+  box-sizing: border-box;
+  padding: 0;
+  width: 3.5rem;
+  height: 100%;
+  border-radius: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  text-align: center;
+  background-color: #EEEEEE;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+  border-style: none;
+}
+
+
+.input::placeholder {
+  text-align: center;
+  background-color: inherit;
+  color: #BEBCCC;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #BEBCCC;
+  border: 0.0625rem solid #DAD7E0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #DAD7E0;
+}

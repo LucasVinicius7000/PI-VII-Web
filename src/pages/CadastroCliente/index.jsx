@@ -15,7 +15,7 @@ import Button from "../../components/Button";
 import { MdEmail } from "react-icons/md";
 import ModalAviso from "./../../components/ModalAviso";
 import IconeErro from "../../assets/Icone-Erro.svg";
-import api from "../../services/api";
+import api from "../../services/Api";
 import { ToastError, ToastSucess } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,6 @@ export default function CadastroEmpresa() {
 
 
     const handleSubmit = async () => {
-        debugger;
         await api.post("/cliente/cadastro", {
                 name: name,
                 userName: telefone + Math.random(),

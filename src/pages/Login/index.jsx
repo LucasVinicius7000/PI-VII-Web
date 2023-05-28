@@ -12,7 +12,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
 import ModalAviso from "../../components/ModalAviso";
 import IconeErro from "./../../assets/Icone-Erro.svg";
-import api from "./../../services/api";
+import api from "./../../services/Api";
 import { ToastError, ToastSucess } from "../../utils/Toast";
 import { UserContext } from "../../contexts/userContext";
 import { useNavigate } from "react-router-dom";
@@ -39,12 +39,16 @@ export default function Login() {
                 password: password,
             });
             if (response?.data?.isSucessful) {
+                debugger;
                 ToastSucess(response?.data?.clientMessage);
                 let token = response?.data?.data?.token;
                 let role = response?.data?.data?.role;
+                if (role === "Estabelecimento") navigate("/homeEmpresa")
+                else if (role === "Cliente") navigate("/home");
+                else if (role === "Admin") { }
                 setUserToken(token);
                 setUserRole(role);
-                navigate("/home");
+
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {
             ToastError(error.response?.data?.clientMessage);
@@ -82,12 +86,12 @@ export default function Login() {
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             />
                     }
@@ -114,7 +118,6 @@ export default function Login() {
                     width={'100%'}
                     text={"Login"}
                     onClick={() => {
-                        debugger;
                         if (!canSubmit) {
                             setModalError(true);
                         } else {

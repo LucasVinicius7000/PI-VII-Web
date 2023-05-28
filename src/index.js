@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
+import CadastroProduto from "./pages/CadastroProduto";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,10 +43,6 @@ function App() {
       element: <HomeEmpresa />,
     },
     {
-      path: "/homeCliente",
-      element: <HomeCliente />
-    },
-    {
       path: "/estabelecimentos",
       element: <Estabelecimentos />
     },
@@ -54,10 +50,13 @@ function App() {
       path: "/categoriaEscolhida",
       element: <CategoriaEscolhida />
     },
-
     {
       path: "/produtosCadastrados",
       element: <ProdutosCadastrados />
+    },
+    {
+      path: "/empresa/produto/cadastro",
+      element: <CadastroProduto/>
     }
   ]);
 
