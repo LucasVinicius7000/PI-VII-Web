@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
 import CadastroEmpresa from "./pages/CadastroEmpresa";
 import CadastroCliente from "./pages/CadastroCliente";
 import UserContextProvider from "./contexts/userContext";
@@ -42,10 +41,6 @@ function App() {
     {
       path: "/homeEmpresa",
       element: <HomeEmpresa />,
-    },
-    {
-      path: "/homeCliente",
-      element: <HomeCliente />
     },
     {
       path: "/estabelecimentos",

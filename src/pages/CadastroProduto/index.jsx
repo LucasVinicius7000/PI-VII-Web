@@ -11,9 +11,16 @@ import { useState } from "react";
 import InputDate from "../../components/InputDate";
 import ModalAviso from "../../components/ModalAviso";
 import IconeErro from "./../../assets/Icone-Erro.svg";
+import api from "../../services/Api";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
+import { ToastError, ToastSucess } from "../../utils/Toast";
+import { useNavigate } from "react-router-dom";
 
 export default function CadastroProduto() {
 
+  let navigate = useNavigate();
+  let { estabelecimentoId } = useContext(UserContext);
   const [nome, setNome] = useState(null);
   const [marca, setMarca] = useState(null);
   const [peso, setPeso] = useState(null);
@@ -37,15 +44,44 @@ export default function CadastroProduto() {
   }, [canSubmit, nome, peso, categoria, quantidade, valorUnitario, imagemPrincipal]);
 
   const handleSetQuantidade = (value) => {
+    debugger;
     setQuantidade(value);
   }
 
+  const submit = async () => {
+    try {
+      let response = await api.post("produto/cadastrar", {
+        estabelecimentoId: estabelecimentoId,
+        nome: nome,
+        marca: marca,
+        peso: peso,
+        quantidadeEstoque: quantidade,
+        categoria: categoria,
+        vencimentoEm: dataValidade,
+        valorUnitario: valorUnitario,
+        valorComDesconto: valorComDesconto,
+        lote: lote,
+        observacao: observacao,
+        nomeArquivoImagem: imagemPrincipal?.name,
+        extensaoArquivoImagem: imagemPrincipal?.fileExtension,
+        conteudoArquivoImagem: imagemPrincipal?.base64.split(',')[1],
+      });
 
+      if (response.data?.isSucessful) {
+        navigate("/homeEmpresa");
+        ToastSucess(response?.data?.clientMessage);
+      }
+      else ToastError(response?.data?.clientMessage);
+
+    } catch (error) {
+      ToastError(error.response.data.clientMessage);
+    }
+  };
 
   return (
     <>
       <HeaderGeral
-        titulo={"Cadastrar Produto"}
+        titulo={""}
         url={"/homeEmpresa"}
       />
       <div className={styles.container}>
@@ -72,7 +108,7 @@ export default function CadastroProduto() {
             componentes={[
               <Input type="text" onChange={(e) => setNome(e.target.value)} placeholder={"Nome"} height={"3.2rem"} backgroundColor={"#eee"} />,
               <Input type="text" onChange={(e) => setMarca(e.target.value)} placeholder={"Marca"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" onChange={(e) => setPeso(e.target.value)} placeholder={"Peso"} height={"3.2rem"} backgroundColor={"#eee"} />,
+              <Input onlyNumbers={true} onChange={(e) => setPeso(e.target.value)} placeholder={"Peso (Kg)"} height={"3.2rem"} backgroundColor={"#eee"} />,
               <DropdownProduct height={"3.2rem"}
                 options={[
                   { value: '0', label: 'Hortifruti' },
@@ -103,7 +139,7 @@ export default function CadastroProduto() {
                 setValorUnitario(e.target.value);
               }} placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
               <Input onlyNumbers={true} value={valorComDesconto} onChange={(e) => {
-                setValorComDesconto(true);
+                setValorComDesconto(e.target.value);
               }} placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
               <Input type="text" onChange={(e) => setLote(e.target.value)} placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />,
               <Input type="text" onChange={(e) => setObservacao(e.target.value)} placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
@@ -115,12 +151,12 @@ export default function CadastroProduto() {
           <Button
             text={"Cadastrar Produto"}
             width={'27.5rem'}
-            onClick={() => {
+            onClick={async () => {
               if (!canSubmit) {
                 setModalError(true);
               }
               else {
-
+                await submit();
               }
             }}
           />

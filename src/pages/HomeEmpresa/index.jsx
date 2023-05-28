@@ -19,6 +19,8 @@ export default function HomeEmpresa() {
 
   const navigate = useNavigate();
 
+  
+
   return <>
     <Header/>   
     <div className={styles.search} >

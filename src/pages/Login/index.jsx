@@ -39,12 +39,16 @@ export default function Login() {
                 password: password,
             });
             if (response?.data?.isSucessful) {
+                debugger;
                 ToastSucess(response?.data?.clientMessage);
                 let token = response?.data?.data?.token;
                 let role = response?.data?.data?.role;
+                if (role === "Estabelecimento") navigate("/homeEmpresa")
+                else if (role === "Cliente") navigate("/home");
+                else if (role === "Admin") { }
                 setUserToken(token);
                 setUserRole(role);
-                navigate("/home");
+
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {
             ToastError(error.response?.data?.clientMessage);
@@ -82,12 +86,12 @@ export default function Login() {
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red", cursor: "pointer" } : { color: "#E8AF3C", cursor: "pointer" }}
                             />
                     }

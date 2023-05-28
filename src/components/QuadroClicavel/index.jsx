@@ -18,7 +18,7 @@ export default function QuadroClicavel({ texto, titulo, handleImage }) {
         await ImageEncoder(e).then((res) => {
           result = res?.base64;
           setSelectedFile(result);
-          handleImage(result);
+          handleImage(res);
           setShowText(false);
         })
           .catch(() => {

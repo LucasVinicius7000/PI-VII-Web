@@ -34,14 +34,9 @@ export default function Endereco() {
     }
 
     const choiceHome = () => {
-        if(userRole === 'Admin'){
-            return <HomeCliente/>
-        }
-        else if(userRole === 'Estabelecimento'){
-            return <HomeEmpresa/>
-        }
-        else if(userRole === 'Cliente'){
-            return <HomeCliente/>
+        debugger;
+        if (userRole === 'Cliente') {
+            return <HomeCliente />
         }
         else return <div>Nada pra ver aqui..</div>;
     }
