@@ -74,7 +74,8 @@ export default function CadastroProduto() {
       else ToastError(response?.data?.clientMessage);
 
     } catch (error) {
-      ToastError(error.response.data.clientMessage);
+      console.log(error);
+      ToastError(error.message);
     }
   };
 
