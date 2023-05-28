@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { decodeToken } from "react-jwt";
 import { ToastError, ToastSucess } from "../utils/Toast";
-import api from "../services/Api";
+import api from "./../services/Api";
 
 export const UserContext = createContext({});
 
