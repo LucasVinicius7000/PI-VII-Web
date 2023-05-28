@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { decodeToken } from "react-jwt";
 import { ToastError, ToastSucess } from "../utils/Toast";
-//import api from "./../services/Api";
+import api from "./../services/Api";
 
 export const UserContext = createContext({});
 
@@ -22,7 +22,7 @@ export default function UserContextProvider({ children }) {
             try {
                 const tokenDecoded = decodeToken(userToken);
                 if (tokenDecoded == null) throw new Error("Erro ao decodificar token do usuário.");
-                //api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+                api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
                 if (tokenDecoded.role === "Estabelecimento") setEstabelecimentoId(tokenDecoded.EntityId);
                 else if (tokenDecoded.role === "Cliente") setClienteId(tokenDecoded.EntityId);
                 setUserRole(tokenDecoded.role);
