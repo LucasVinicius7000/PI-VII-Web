@@ -10,7 +10,7 @@ export default function Estabelecimentos() {
         url={"../homeCliente"}
     />   
     <div className={styles.search} >
-        <Search type="text"  placeholder="Qual produto você procura?"/>
+        <Search type="text" placeholder="Qual produto você procura?"/>
     </div>  
     <div className={styles.container}>
         <div className={styles.categorias}>     

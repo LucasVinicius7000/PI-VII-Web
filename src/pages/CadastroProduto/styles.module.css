@@ -5,12 +5,7 @@
   height: auto;
   color: #3D3D4C;
   overflow-x: hidden;
-}
-
-.wrapper {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
+  padding: 4.1875rem 0 0 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -18,11 +13,16 @@
   flex-wrap: wrap;
 }
 
+
 .square {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+}
+
+.square>* {
+  padding-top: 1rem;
 }
 
 .square h2 {
@@ -37,6 +37,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .modalError {
@@ -58,20 +59,49 @@
   color: var(--details-2);
 }
 
+.productArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.8rem;
+}
+
+.productArea>h2 {
+  font-weight: 700;
+  padding-bottom: 1.5rem !important;
+  padding-left: .5rem !important;
+}
+
+.details>h2,
+.productArea>h2,
+.estoque>h2 {
+  font-size: 1.25rem;
+  color: var(--black-02);
+  font-weight: 600;
+}
+
+.details>h2,
+.estoque>h2{
+  margin-bottom: 1rem !important;
+  font-size: 1.5rem !important;
+}
+
+.estoque, .details{
+  max-width: 23rem !important;
+  width: 100% !important;
+  padding-top: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap:0.60rem;
+}
+
 @media(max-width:500px) {
   .buttonArea {
     padding: 0 15% 0 15%;
     width: 70% !important;
   }
 
-  .wrapper {
-    margin: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #combinedComponent2 {
-    max-width: 85% !important;
-  }
 }

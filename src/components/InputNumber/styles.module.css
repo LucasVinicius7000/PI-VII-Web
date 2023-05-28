@@ -1,6 +1,5 @@
 .container {
-  box-sizing: border-box !important;
-  width: 110%;
+  width: 108%;
   height: 3.2rem;
   background-color: #EEEEEE;
   border-radius: 1rem;
@@ -8,17 +7,14 @@
   align-items: center;
   justify-items: space-between;
   flex-direction: row;
-  padding: 0 2rem;
-  margin-bottom: 8px;
 }
 
-.container:first-child {
-  font-size: 1rem;
-  text-overflow: ellipsis;
-  word-wrap: normal;
+.container > span {
   white-space: nowrap;
-  color: var(--font-color-6) !important;
+  word-wrap: normal !important;
+  color: var(--font-color-6);
   font-weight: 700;
+  padding-left: 2rem;
 }
 
 .inputArea {

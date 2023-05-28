@@ -32,7 +32,7 @@ export default function InputNumber({ titleInput, setValue }) {
 
 
   return (
-    <div className={styles.container} id="containerError">
+    <div className={styles.container}>
       <span>{titleInput}</span>
       <div className={styles.inputArea}>
         <button className={styles.btn} onClick={handleDecrementClick}>
@@ -50,7 +50,6 @@ export default function InputNumber({ titleInput, setValue }) {
           <FaPlus size={16} />
         </button>
       </div>
-      <div className={styles.verticalDeco}></div>
     </div>
   );
 }

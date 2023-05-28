@@ -74,8 +74,13 @@ export default function CadastroProduto() {
       else ToastError(response?.data?.clientMessage);
 
     } catch (error) {
-      console.log(error);
-      ToastError(error.message);
+      if(error.response){
+        ToastError(error.response.data.clientMessage);
+      }
+      else{
+        ToastError(error.message);
+      }
+      
     }
   };
 
@@ -98,55 +103,52 @@ export default function CadastroProduto() {
             {(imagemPrincipal === null) && <span>* O produto precisa possuir pelo menos uma <span className={styles.destaqueErro}>imagem</span>.</span>}
           </div>
         </ModalAviso>
-        <div className={styles.wrapper}>
-          <div className={styles.square} id="square">
-            <h2>Cadastrar Produto</h2>
-            <QuadroClicavel handleImage={(value) => setImagemPrincipal(value)} texto={"Insira uma Imagem"} />
-          </div>
-          <CombinedComponent
-            width={"23rem"}
-            id={styles.combinedComponent2}
-            componentes={[
-              <Input type="text" onChange={(e) => setNome(e.target.value)} placeholder={"Nome"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" onChange={(e) => setMarca(e.target.value)} placeholder={"Marca"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input onlyNumbers={true} onChange={(e) => setPeso(e.target.value)} placeholder={"Peso (Kg)"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <DropdownProduct height={"3.2rem"}
-                options={[
-                  { value: '0', label: 'Hortifruti' },
-                  { value: '1', label: 'Padaria' },
-                  { value: '2', label: 'Açougue' },
-                  { value: '3', label: 'Frios e Laticínios' },
-                  { value: '4', label: 'Cereais' },
-                  { value: '5', label: 'Biscoitos' },
-                  { value: '6', label: 'Enlatadados' },
-                  { value: '7', label: 'Bebidas' },
-                  { value: '8', label: 'Higiene e Limpeza' },
-                ]} placeholder={"Categoria"}
-                onSelect={(option) => setCategoria(option.value)}
-              />,
-              <InputDate
-                value={dataValidade}
-                onChange={(date) => setDataValidade(date)}
-                placeholder={"Data de Validade"}
-                backgroundColor={"#eee"} />,
-            ]} titulo="Detalhes do Produto"
-          />
-          <CombinedComponent
-            width={"23rem"}
-            id={styles.combinedComponent2}
-            componentes={[
-              <InputNumber setValue={handleSetQuantidade} titleInput="Quantidade Disponível" />,
-              <Input onlyNumbers={true} value={valorUnitario} onChange={(e) => {
-                setValorUnitario(e.target.value);
-              }} placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input onlyNumbers={true} value={valorComDesconto} onChange={(e) => {
-                setValorComDesconto(e.target.value);
-              }} placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-              <Input type="text" onChange={(e) => setLote(e.target.value)} placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />,
-              <Input type="text" onChange={(e) => setObservacao(e.target.value)} placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />,
-            ]} titulo="Estoque"
-          />
+
+        <div className={styles.productArea}>
+          <h2>Cadastrar Produto</h2>
+          <QuadroClicavel handleImage={(value) => setImagemPrincipal(value)} texto={"Insira uma Imagem"} />
         </div>
+
+        <div className={styles.details}>
+          <h2>Detalhes do produto</h2>
+          <Input type="text" onChange={(e) => setNome(e.target.value)} placeholder={"Nome"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <Input type="text" onChange={(e) => setMarca(e.target.value)} placeholder={"Marca"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <Input onlyNumbers={true} onChange={(e) => setPeso(e.target.value)} placeholder={"Peso (Kg)"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <DropdownProduct height={"3.2rem"}
+            options={[
+              { value: '0', label: 'Hortifruti' },
+              { value: '1', label: 'Padaria' },
+              { value: '2', label: 'Açougue' },
+              { value: '3', label: 'Frios e Laticínios' },
+              { value: '4', label: 'Cereais' },
+              { value: '5', label: 'Biscoitos' },
+              { value: '6', label: 'Enlatadados' },
+              { value: '7', label: 'Bebidas' },
+              { value: '8', label: 'Higiene e Limpeza' },
+            ]} placeholder={"Categoria"}
+            onSelect={(option) => setCategoria(option.value)}
+          />
+          <InputDate
+            value={dataValidade}
+            onChange={(date) => setDataValidade(date)}
+            placeholder={"Data de Validade"}
+            backgroundColor={"#eee"} />
+        </div>
+
+        <div className={styles.estoque}>
+          <h2>Estoque</h2>
+          <InputNumber setValue={handleSetQuantidade} titleInput="Quantidade Disponível" />
+          <Input onlyNumbers={true} value={valorUnitario} onChange={(e) => {
+            setValorUnitario(e.target.value);
+          }} placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <Input onlyNumbers={true} value={valorComDesconto} onChange={(e) => {
+            setValorComDesconto(e.target.value);
+          }} placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <Input type="text" onChange={(e) => setLote(e.target.value)} placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />
+          <Input type="text" onChange={(e) => setObservacao(e.target.value)} placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
+
+        </div>
+
 
         <div className={styles.buttonArea}>
           <Button
