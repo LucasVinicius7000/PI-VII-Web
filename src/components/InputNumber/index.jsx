@@ -34,9 +34,9 @@ export default function InputNumber({ titleInput, setValue }) {
   return (
     <div className={styles.container}>
       <span>{titleInput}</span>
-      <div className={styles.inputArea}>
+      <section>
         <button className={styles.btn} onClick={handleDecrementClick}>
-          <FaMinus size={16} />
+          <FaMinus />
         </button>
         <input
           type="number"
@@ -47,9 +47,9 @@ export default function InputNumber({ titleInput, setValue }) {
           min={0}
         />
         <button className={styles.btn} onClick={handleIncrementClick}>
-          <FaPlus size={16} />
+          <FaPlus />
         </button>
-      </div>
+      </section>
     </div>
   );
 }

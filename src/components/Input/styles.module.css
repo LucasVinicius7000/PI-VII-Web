@@ -32,7 +32,7 @@
 
 .container>input::placeholder {
     background-color: inherit;
-    color: var(--font-color-6);;
+    color: var(--font-color-6);
 }
 
 .container > input::-webkit-inner-spin-button{
