@@ -79,10 +79,6 @@ export default function Endereco() {
                 placeholder={"Busque seu endereço aqui.."}
             />
             {userCoordinates?.lat && userCoordinates?.lng ? <div onClick={handleStart} className={styles.start}>Começar</div> : ''}
-
-            <p>Menu provisório:</p>
-            <button><a href="../cliente/cadastro">Cadastro de Cliente</a></button>
-            <button><a href="../cadastroEmpresa">Cadastro de Empresa</a></button>
         </div>
     </div> : choiceHome()
 

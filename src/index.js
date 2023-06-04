@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useContext, useState } from "react";
 import { UserContext } from "./contexts/userContext";
 import Endereco from "./components/Endereco";
+import FormularioAplicacao from "./pages/FormularioAplicacao";
 
 function App() {
 
@@ -57,6 +58,10 @@ function App() {
     {
       path: "/empresa/produto/cadastro",
       element: <CadastroProduto/>
+    },
+    {
+      path: "/empresa/formulario",
+      element: <FormularioAplicacao/>
     }
   ]);
 
