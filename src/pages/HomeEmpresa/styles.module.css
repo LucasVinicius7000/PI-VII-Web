@@ -52,7 +52,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.infiniteContainer > *{
+  margin-bottom: 1.5rem;
 }
 
 .scrollmenu {
@@ -150,6 +154,12 @@
     margin-bottom: 60px;
   }
 
+}
+
+@media(max-width:800px){
+  .container{
+    padding-top: 4rem;
+  }
 }
 
 @media(max-width:775px) {

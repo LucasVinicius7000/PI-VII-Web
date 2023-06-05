@@ -131,8 +131,7 @@ export default function HomeEmpresa() {
             </div>
         </div>
         <div className={styles.container}>
-
-            <div className={styles.categorias} style={{ alignSelf: 'flex-start', marginBottom: "2rem" }}>
+            <div className={styles.categorias} style={{ alignSelf: 'flex-start', marginBottom: "2rem", marginTop: "3rem" }}>
                 <h2>Produtos</h2>
             </div>
             <div className={styles.categorias}>

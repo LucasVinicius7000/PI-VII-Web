@@ -10,15 +10,20 @@ import { BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/Go
 import Button from "../../components/Button";
 import ModalAviso from "../../components/ModalAviso";
 import IconeErro from "./../../assets/Icone-Erro.svg";
+import api from "../../services/Api";
+import { UserContext } from "../../contexts/userContext";
+import { useContext } from "react";
+import { ToastError, ToastSucess } from "../../utils/Toast";
 
 export default function FormularioAplicacao() {
+
+    const { estabelecimentoId, userId } = useContext(UserContext);
 
     const [addresses, setAddresses] = useState([]);
     const [placeId, setPlaceId] = useState(null);
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     const [selectedAddress, setSelectedAddress] = useState('');
-    const [isAprooved, setIsAprooved] = useState(false);
     const [file, setFile] = useState(null);
     const [stringFormasPagamento, setStringFormasPagamento] = useState('3');
     const [proprietario, setProprietario] = useState('');
@@ -50,7 +55,33 @@ export default function FormularioAplicacao() {
 
 
     const handleSubmit = async () => {
-
+        try {
+            let response = await api.post("estabelecimento/submitForm", {
+                coordenadas: {
+                    latitude: latitude,
+                    longitude: longitude
+                },
+                endereco: selectedAddress,
+                nomeArquivo: file?.name,
+                extensaoArquivo: file?.fileExtension,
+                conteudoArquivo: file?.base64.split(',')[1],
+                metodoCompra: metodoCompra,
+                formasPagamento: stringFormasPagamento,
+                nomeProprietario: proprietario,
+                valorPorKmRodado: valorPorKm,
+                taxaMinima: taxaMinima,
+                cpfProprietario: cpf,
+                estabelecimentoId: estabelecimentoId
+            });
+            if (response.data.isSucessful) {
+                ToastSucess("Formulário de aplicação submetido com sucesso.");
+            }
+            else {
+                ToastError(response?.data?.clientMessage);
+            }
+        } catch (error) {
+            ToastError("Ocorreu um erro ao submeter o formulário de aplicação.");
+        }
     }
 
     return <div className={styles.container}>
@@ -170,10 +201,11 @@ export default function FormularioAplicacao() {
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }} >
                 <div className={styles.submitBtn}>
                     <Button
-                        onClick={() => {
+                        onClick={async () => {
                             if (!canSubmit) {
                                 setModalError(true);
                             }
+                            else await handleSubmit();
                         }}
                         text={'Enviar Formulário'}
                     />
