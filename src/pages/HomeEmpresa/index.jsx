@@ -62,7 +62,7 @@ export default function HomeEmpresa() {
         <div className={styles.search} >
             <Search type="text" placeholder="Qual produto você procura?" />
         </div>
-        <div className={styles.butao}>
+        <div className={styles.botao}>
             <Button
                 text={"Cadastrar Produto"}
                 width={180}

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-height: 100%;
+  max-height: auto;
   height: auto;
   display: flex;
   align-items: center;
@@ -10,31 +10,10 @@
   background-color: var(--font-color-1);
 }
 
-.box {
-  display: flex;
-}
-
-.box .verMais {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-left: 85%;
-  padding-top: 60px;
-}
 
 .categorias {
-  padding-left: 30px;
-}
-
-.categorias p {
-  font-size: 16px;
-  color: var(--details-1);
-  padding-top: 5px;
-}
-
-.categorias .espace {
-  padding-left: 70%;
+  height: auto;
+  padding: 0 2rem;
 }
 
 .categorias h2 {
@@ -44,7 +23,7 @@
 
 .infiniteContainer {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .infiniteContainer {
@@ -55,7 +34,7 @@
   gap: 1.5rem;
 }
 
-.infiniteContainer > *{
+.infiniteContainer>* {
   margin-bottom: 1.5rem;
 }
 
@@ -64,12 +43,10 @@
   white-space: nowrap;
   transform-origin: right top;
   margin-left: 20px;
-  margin-bottom: 20px;
 }
 
 .scrollmenu>div {
   display: block;
-  transform-origin: right top;
 }
 
 .scrollmenu a {
@@ -96,7 +73,7 @@
 .squares>div {
   width: 60px;
   height: 60px;
-  margin: 10px;
+  margin: 0 10px 0 10px;
 }
 
 .search {
@@ -140,53 +117,17 @@
   cursor: pointer;
 }
 
-@media (max-width:895px) {
-  .butao {
-    padding-left: 30%;
-  }
 
-  .box .verMais {
-    padding-left: 40%;
-    padding-top: 60px;
-  }
-
-  .scrollmenu {
-    margin-bottom: 60px;
-  }
-
+.botao {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
 }
 
-@media(max-width:800px){
-  .container{
-    padding-top: 4rem;
-  }
+.botao>* {
+  width: 15.5rem;
+  margin-right: 2rem;
 }
 
-@media(max-width:775px) {
-
-  .infiniteContainer {
-    width: 100%;
-    height: 100%;
-  }
-
-  .infiniteContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .scrollmenu a {
-    display: inline-block;
-    color: #8192A3;
-    text-align: center;
-    padding: 1px;
-    text-decoration: none;
-    margin-bottom: 13px;
-    transform: translateX(10px);
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-}
