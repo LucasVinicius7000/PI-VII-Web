@@ -7,9 +7,9 @@ export default function CardGeral
         <img srcSet={image} alt="" />
       </div>
       <div className={styles.textos}>
-        <p id={styles.titulo}>{titulo}</p>
-        <p id={styles.local}>{local}</p>
-        <p id={styles.preco}>{preco}</p>
+        <span id={styles.titulo}>{titulo}</span>
+        <span id={styles.local}>{local}</span>
+        <span id={styles.preco}>{preco}</span>
       </div>
     </div>
   );

@@ -1,44 +1,69 @@
 .container {
-    background-color: var(--font-color-4);
-    width: 310px;
-    height: 110px;
-    border-radius: 9px;
-    display: flex;
-    margin: 0px 50px 0px 0px;
-  }
-  .textos {
-    text-align: center;
-    padding: 8px 10px 0px 30px;
-  }
-  #imagem {
-    padding: 0.8rem;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    background-color: var(--details-2);
-    border-radius: 8px 0px 0px 8px;
-  }
-  #titulo {
-    margin: 0px;
-    text-align: left;
-    font-family: "Poppins";
-    font-weight: 600;
-    color: var(--black-02);
-    overflow: hidden;
-    margin-bottom: -1rem;
-  }
-  #local {
-    text-align: left;
-    font-family: "Roboto";
-    color: var(--black-02);
-    margin-bottom: -1rem;
-    overflow: hidden;
-    width: 120px;
-  }
-  #preco {
-    font-family: "Roboto";
-    color: var(--details-4);
-    text-align: center;
-    overflow: hidden;
-  }
-  
+  background-color: var(--font-color-4);
+  width: 310px;
+  height: 7.125rem;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 50px 0px 0px;
+}
+
+
+#imagem {
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: inherit;
+  background-color: var(--details-2);
+  border-radius: 8px 0px 0px 8px;
+}
+
+#imagem>img {
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.textos {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  height: inherit;
+  flex-grow: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start !important;
+}
+
+.textos>span {
+  max-width: 100%;
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#titulo {
+  font-family: "Poppins";
+  font-weight: 600;
+  color: var(--black-02);
+}
+
+#local {
+  font-family: "Roboto";
+  color: var(--black-02);
+}
+
+#preco {
+  font-family: "Roboto";
+  color: var(--details-4);
+  font-weight: 800;
+  font-size: 1.45rem;
+}

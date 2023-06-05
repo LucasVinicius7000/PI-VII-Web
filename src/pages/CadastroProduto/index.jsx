@@ -44,7 +44,6 @@ export default function CadastroProduto() {
   }, [canSubmit, nome, peso, categoria, quantidade, valorUnitario, imagemPrincipal]);
 
   const handleSetQuantidade = (value) => {
-    debugger;
     setQuantidade(value);
   }
 

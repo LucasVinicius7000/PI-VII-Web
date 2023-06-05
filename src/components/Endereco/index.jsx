@@ -34,7 +34,6 @@ export default function Endereco() {
     }
 
     const choiceHome = () => {
-        debugger;
         if (userRole === 'Cliente') {
             return <HomeCliente />
         }

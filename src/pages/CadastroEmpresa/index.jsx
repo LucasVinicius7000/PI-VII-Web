@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DecorationIconsTop from "./../../assets/DecorationIconsTop.svg";
 import DecorationIconsBottom from "./../../assets/DecorationIconsBottom.svg";
 import LocalStoreLogoCadastro from "./../../assets/LocalStoreLogoCadastro.svg";
@@ -15,13 +15,63 @@ import IconTelefone from "./../../assets/IconTelefone.svg";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import Button from "../../components/Button";
+import api from "../../services/Api";
+import IconeErro from "../../assets/Icone-Erro.svg";
+import { ToastError, ToastSucess } from "../../utils/Toast";
+import ModalAviso from "../../components/ModalAviso";
 
 export default function CadastroEmpresa() {
 
+    const [canSubmit, setCanSubmit] = useState(false);
+    const [confirmSenha, setConfirmSenha] = useState(null);
     const [hasError, setHasError] = useState(false);
+    const [modalError, setModalError] = useState(false);
+    const [formCadastro, setFormCadastro] = useState({
+        userName: '',
+        email: '',
+        senha: '',
+        nomeFantasia: '',
+        razaoSocial: '',
+        cnpj: '',
+        telefone: '',
+    });
     const [passIsVisible, setPassIsVisible] = useState(true);
 
+    useEffect(() => {
+        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
+            setCanSubmit(true);
+        }
+    }, [formCadastro])
+
+
+    const handleSubmit = async () => {
+        try {
+
+            formCadastro.userName = formCadastro.email + Math.random();
+            let response = await api.post("estabelecimento/cadastrar", formCadastro);
+            let data = response.data;
+            if (data?.isSucessful) {
+                ToastSucess("Cadastro realizado com sucesso!");
+            }
+            else ToastError("Ocorreu um erro ao cadastrar.");
+
+        } catch (error) {
+            ToastError("Ocorreu um erro desconhecido ao cadastrar. Tente novamente mais tarde.");
+        }
+    }
+
     return <div className={styles.container}>
+        <ModalAviso isOpen={modalError} onClick={() => setModalError(false)}>
+            <div className={styles.modalError}>
+                <img src={IconeErro} alt="Ícone de erro." />
+                {formCadastro.cnpj === '' && <span>* O campo <span className={styles.destaqueErro}>CNPJ</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.telefone === '' && <span>* O campo <span className={styles.destaqueErro}>telefone</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.email === '' && <span>* O campo <span className={styles.destaqueErro}>e-mail</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.nomeFantasia && <span> * O <span className={styles.destaqueErro}>nome fantasia</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.senha !== confirmSenha && <span>* As <span className={styles.destaqueErro}>SENHAS</span> digitadas não correspondem.</span>}
+                {formCadastro.razaoSocial && <span>* O campo <span className={styles.destaqueErro}>razão social</span> precisa ser preenchido com um valor válido.</span>}
+            </div>
+        </ModalAviso>
         <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
         <img id={styles.iconBottom} alt="Ícones diversos no topo." src={DecorationIconsBottom} />
         <section className={styles.signUpSection}>
@@ -31,14 +81,27 @@ export default function CadastroEmpresa() {
                 <Input
                     placeholder={"Razão Social"}
                     startIcon={<img src={IconeUsuario} alt="Ícone usuário." />}
+                    onChange={(e) => {
+                        formCadastro.razaoSocial = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                 />
                 <Input
                     placeholder={"Nome Fantasia"}
                     startIcon={<img src={IconFantasia} alt="Ícone usuário." />}
+                    onChange={(e) => {
+                        formCadastro.nomeFantasia = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                 />
                 <Input
+                    mask={"99.999.999/9999-99"}
                     placeholder={"CNPJ"}
                     startIcon={<img src={IconCNPJ} alt="Ícone usuário." />}
+                    onChange={(e) => {
+                        formCadastro.cnpj = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                 />
                 <Input
                     placeholder={"Endereço"}
@@ -46,15 +109,27 @@ export default function CadastroEmpresa() {
                 />
                 <Input
                     placeholder={"Email"}
+                    onChange={(e) => {
+                        formCadastro.email = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                     startIcon={<img src={IconEmail} alt="Ícone usuário." />}
                 />
                 <Input
                     placeholder={"Telefone"}
                     startIcon={<img src={IconTelefone} alt="Ícone usuário." />}
+                    onChange={(e) => {
+                        formCadastro.telefone = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                 />
                 <Input
                     hasError={hasError}
                     placeholder={"Senha "}
+                    onChange={(e) => {
+                        formCadastro.senha = e.target.value;
+                        setFormCadastro(formCadastro);
+                    }}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
@@ -75,6 +150,7 @@ export default function CadastroEmpresa() {
                 <Input
                     hasError={hasError}
                     placeholder={"Confirmar Senha"}
+                    onChange={(e) => setConfirmSenha(e.target.value)}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
@@ -96,6 +172,13 @@ export default function CadastroEmpresa() {
 
                 <Button
                     text={"Cadastrar"}
+                    onClick={async () => {
+                        if (!canSubmit) {
+                            setModalError(true);
+                        } else {
+                            await handleSubmit();
+                        }
+                    }}
                 />
                 <br />
             </form>

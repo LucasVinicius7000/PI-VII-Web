@@ -1,4 +1,5 @@
 import styles from "./styles.module.css";
+import InputMask from "react-input-mask";
 
 export default function Input
   ({
@@ -10,7 +11,8 @@ export default function Input
     hasError,
     passwordIsShowing = true,
     backgroundColor,
-    onlyNumbers = false
+    onlyNumbers = false,
+    mask
   }) {
 
   return <div
@@ -20,14 +22,15 @@ export default function Input
   >
     {startIcon}
     {startIcon && <div className={styles.verticalDeco}></div>}
-    <input
+    <InputMask
+      mask={mask}
       type={onlyNumbers ? "number" : passwordIsShowing ? "text" : "password"}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
       id={hasError && styles.inputError}
       style={{ backgroundColor: backgroundColor ? backgroundColor : undefined }}
-    ></input>
+    ></InputMask>
     {endIcon}
   </div>
 }

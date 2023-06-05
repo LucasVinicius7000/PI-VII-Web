@@ -2,7 +2,6 @@ import { ToastError } from "./../utils/Toast";
 
 
 export default async function FileTextEncoder(inputEvent) {
-debugger;
     return new Promise((resolve, reject) => {
         let selectedFile = inputEvent?.target?.files[0];
         if (selectedFile.type.substring(0, selectedFile.type.indexOf('/')) === 'application') {

@@ -48,6 +48,11 @@ export default function FormularioAplicacao() {
         else setCanSubmit(false);
     }, [cpf, metodoCompra, taxaMinima, valorPorKm, proprietario, placeId, latitude, longitude, selectedAddress, file, stringFormasPagamento]);
 
+
+    const handleSubmit = async () => {
+
+    }
+
     return <div className={styles.container}>
         <ModalAviso isOpen={modalError} onClick={() => setModalError(false)}>
             <div className={styles.modalError}>
@@ -166,7 +171,7 @@ export default function FormularioAplicacao() {
                 <div className={styles.submitBtn}>
                     <Button
                         onClick={() => {
-                            if(!canSubmit){
+                            if (!canSubmit) {
                                 setModalError(true);
                             }
                         }}

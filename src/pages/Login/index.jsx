@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
-    let { setUserToken, setUserRole } = useContext(UserContext);
+    let { setUserToken, setUserRole, setUserId } = useContext(UserContext);
     const [hasError, setHasError] = useState(false);
     const [passIsVisible, setPassIsVisible] = useState(false);
     const [password, setPassword] = useState(null);
@@ -48,6 +48,7 @@ export default function Login() {
                 else if (role === "Admin") { }
                 setUserToken(token);
                 setUserRole(role);
+                setUserId(response?.data?.data?.id);
 
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {

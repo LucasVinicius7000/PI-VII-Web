@@ -14,6 +14,7 @@ export default function UserContextProvider({ children }) {
     const [userToken, setUserToken] = useState(null);
     const [estabelecimentoId, setEstabelecimentoId] = useState(null);
     const [clienteId, setClienteId] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         debugger;
@@ -26,6 +27,7 @@ export default function UserContextProvider({ children }) {
                 if (tokenDecoded.role === "Estabelecimento") setEstabelecimentoId(tokenDecoded.EntityId);
                 else if (tokenDecoded.role === "Cliente") setClienteId(tokenDecoded.EntityId);
                 setUserRole(tokenDecoded.role);
+                setUserId(tokenDecoded.Id);
             } catch (error) {
                 ToastError(error);
             }
@@ -34,6 +36,7 @@ export default function UserContextProvider({ children }) {
     }, [userToken]);
 
     useEffect(() => {
+        debugger;
         let token = localStorage.getItem("token");
         if (token != null) setUserToken(token);
     }, []);
@@ -51,6 +54,7 @@ export default function UserContextProvider({ children }) {
         setIsAprooved,
         setUserToken,
         setUserRole,
+        setUserId,
         isAprooved,
         userRole,
         isAuthenticate,
@@ -58,6 +62,7 @@ export default function UserContextProvider({ children }) {
         userToken,
         estabelecimentoId,
         clienteId,
+        userId,
     }}>
         {children}
     </UserContext.Provider>
