@@ -15,16 +15,30 @@ export default function UserContextProvider({ children }) {
     const [estabelecimentoId, setEstabelecimentoId] = useState(null);
     const [clienteId, setClienteId] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [estabelecimentoInfo, setEstabelecimentoInfo] = useState(null);
 
     useEffect(() => {
-        debugger;
         if (userToken != null) {
             localStorage.setItem("token", userToken);
             try {
                 const tokenDecoded = decodeToken(userToken);
                 if (tokenDecoded == null) throw new Error("Erro ao decodificar token do usuário.");
                 api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
-                if (tokenDecoded.role === "Estabelecimento") setEstabelecimentoId(tokenDecoded.EntityId);
+                if (tokenDecoded.role === "Estabelecimento") {
+                    setEstabelecimentoId(tokenDecoded.EntityId);
+                    const verifyIsAprooved = async () => {
+                        let response = await api.get(`estabelecimento?userId=${tokenDecoded?.Id}`);
+                        if (response.data.isSucessful === true) {
+                            let aprooved = response?.data?.data?.aprovado;
+                            setIsAprooved(aprooved);
+                            setEstabelecimentoInfo(response.data.data);
+                        } else {
+                            setIsAprooved(false);
+                            ToastError("Falha ao buscar status de aprovação do estabelecimento.");
+                        }
+                    };
+                    verifyIsAprooved();
+                }
                 else if (tokenDecoded.role === "Cliente") setClienteId(tokenDecoded.EntityId);
                 setUserRole(tokenDecoded.role);
                 setUserId(tokenDecoded.Id);
@@ -36,7 +50,6 @@ export default function UserContextProvider({ children }) {
     }, [userToken]);
 
     useEffect(() => {
-        debugger;
         let token = localStorage.getItem("token");
         if (token != null) setUserToken(token);
     }, []);
@@ -55,6 +68,7 @@ export default function UserContextProvider({ children }) {
         setUserToken,
         setUserRole,
         setUserId,
+        setEstabelecimentoInfo,
         isAprooved,
         userRole,
         isAuthenticate,
@@ -63,6 +77,7 @@ export default function UserContextProvider({ children }) {
         estabelecimentoId,
         clienteId,
         userId,
+        estabelecimentoInfo, 
     }}>
         {children}
     </UserContext.Provider>

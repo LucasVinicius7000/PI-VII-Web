@@ -24,6 +24,8 @@
     font-size: 0.9rem;
     text-align: justify;
     user-select: none;
+    color: var(--black-transparent);
+    font-weight: 800;
 }
 
 .form {

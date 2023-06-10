@@ -1,0 +1,70 @@
+.container {
+    box-sizing: border-box;
+    background-color: var(--details-1);
+    max-width: 100%;
+    width: 100vw;
+}
+
+
+.information {
+    background-color: var(--font-color-1);
+    padding: 5%;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100% !important;
+}
+
+
+.alert {
+    align-self: flex-start;
+    color: #FFFF00 !important;
+    margin-bottom: 1rem;
+}
+
+.information>span {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--black-transparent);
+    text-align: justify;
+    user-select: none;
+}
+
+.emphasis {
+    font-weight: bold;
+}
+
+.denied {
+    font-weight: bolder;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.important {
+    color: var(--details-1) !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+hr{
+    margin-top: 2rem;
+    border:1px solid #00000063;
+    width: 98%;
+}
+
+.deleteAccount {
+    font-size: 0.7rem !important;
+    position: relative;
+    top:4.5rem;
+    margin-bottom: .5rem;
+}
+
+.deleteAccount>span {
+    color: var(--black-transparent);
+    font-weight: bolder;
+    text-decoration: underline;
+    cursor: pointer;
+}

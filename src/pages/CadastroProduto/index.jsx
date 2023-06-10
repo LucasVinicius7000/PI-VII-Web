@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 export default function CadastroProduto() {
 
   let navigate = useNavigate();
-  let { estabelecimentoId } = useContext(UserContext);
+  let { estabelecimentoId, estabelecimentoInfo, userRole, isAprooved } = useContext(UserContext);
   const [nome, setNome] = useState(null);
   const [marca, setMarca] = useState(null);
   const [peso, setPeso] = useState(null);
@@ -46,6 +46,18 @@ export default function CadastroProduto() {
   const handleSetQuantidade = (value) => {
     setQuantidade(value);
   }
+
+  useEffect(() => {
+    if (userRole === "Estabelecimento" && estabelecimentoInfo !== null) {
+        if (isAprooved === 1) {}
+        else if (isAprooved === 0){
+            navigate("/empresa/denied");
+        }
+        else if(isAprooved === 2){
+            navigate("/empresa/pending");
+        }
+    } else navigate("/")
+}, [userRole, isAprooved, estabelecimentoInfo]);
 
   const submit = async () => {
     try {

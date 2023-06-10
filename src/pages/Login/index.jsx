@@ -19,13 +19,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
-    let { setUserToken, setUserRole, setUserId } = useContext(UserContext);
+    let { setUserToken, setUserRole, setUserId, isAprooved, userRole, estabelecimentoInfo } = useContext(UserContext);
     const [hasError, setHasError] = useState(false);
     const [passIsVisible, setPassIsVisible] = useState(false);
     const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(null);
     const [modalError, setModalError] = useState(false);
     const [canSubmit, setCanSubmit] = useState(false);
+    const [isAwaitingAprooved, setIsAwaitingAprooved] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,22 +40,32 @@ export default function Login() {
                 password: password,
             });
             if (response?.data?.isSucessful) {
-                debugger;
                 ToastSucess(response?.data?.clientMessage);
                 let token = response?.data?.data?.token;
                 let role = response?.data?.data?.role;
-                if (role === "Estabelecimento") navigate("/homeEmpresa")
-                else if (role === "Cliente") navigate("/home");
-                else if (role === "Admin") { }
                 setUserToken(token);
                 setUserRole(role);
                 setUserId(response?.data?.data?.id);
-
+                if (role === "Cliente") navigate("/home");
+                else if (role === "Admin") { }
             } else ToastError(response?.data?.clientMessage);
         } catch (error) {
             ToastError(error.response?.data?.clientMessage);
         }
     }
+
+    useEffect(() => {
+        if (userRole === "Estabelecimento" && estabelecimentoInfo !== null) {
+            if (isAprooved === 1) navigate("/homeEmpresa");
+            else if (isAprooved === 0) {
+                navigate("/empresa/denied");
+            }
+            else if (isAprooved === 2) {
+                navigate("/empresa/pending");
+            }
+        }
+    }, [userRole, isAprooved, estabelecimentoInfo]);
+
 
     return <div className={styles.container}>
         <ModalAviso isOpen={modalError} onClick={() => setModalError(false)}>
@@ -127,7 +138,7 @@ export default function Login() {
                     }}
                 />
                 <div className={styles.box} onClick={() => { navigate("/cliente/cadastro") }}>
-                    <h2>Ainda não possui uma conta? <a>Clique aqui</a></h2>
+                    <h2>Ainda não possui uma conta? <a onClick={() => { }}>Clique aqui</a></h2>
                 </div>
             </form>
         </section>

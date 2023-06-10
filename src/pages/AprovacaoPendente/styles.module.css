@@ -1,0 +1,21 @@
+.container {
+    box-sizing: border-box;
+    background-color: var(--details-1);
+    max-width: 100%;
+    width: 100vw;
+    min-height: 100%;
+    max-height: auto;
+    padding: 2rem 15% 0 15%;
+    overflow-x: hidden !important;
+}
+
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5%;
+    border-radius: .5rem;
+    text-align: center;
+    background-color:var(--details-5);
+}

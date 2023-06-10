@@ -19,9 +19,11 @@ import api from "../../services/Api";
 import IconeErro from "../../assets/Icone-Erro.svg";
 import { ToastError, ToastSucess } from "../../utils/Toast";
 import ModalAviso from "../../components/ModalAviso";
+import { useNavigate } from "react-router-dom";
 
 export default function CadastroEmpresa() {
 
+    const navigate = useNavigate();
     const [canSubmit, setCanSubmit] = useState(false);
     const [confirmSenha, setConfirmSenha] = useState(null);
     const [hasError, setHasError] = useState(false);
@@ -38,7 +40,7 @@ export default function CadastroEmpresa() {
     const [passIsVisible, setPassIsVisible] = useState(true);
 
     useEffect(() => {
-        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
+        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
             setCanSubmit(true);
         }
     }, [formCadastro])
@@ -51,6 +53,7 @@ export default function CadastroEmpresa() {
             let response = await api.post("estabelecimento/cadastrar", formCadastro);
             let data = response.data;
             if (data?.isSucessful) {
+                navigate("/");
                 ToastSucess("Cadastro realizado com sucesso!");
             }
             else ToastError("Ocorreu um erro ao cadastrar.");
@@ -67,9 +70,9 @@ export default function CadastroEmpresa() {
                 {formCadastro.cnpj === '' && <span>* O campo <span className={styles.destaqueErro}>CNPJ</span> precisa ser preenchido com um valor válido.</span>}
                 {formCadastro.telefone === '' && <span>* O campo <span className={styles.destaqueErro}>telefone</span> precisa ser preenchido com um valor válido.</span>}
                 {formCadastro.email === '' && <span>* O campo <span className={styles.destaqueErro}>e-mail</span> precisa ser preenchido com um valor válido.</span>}
-                {formCadastro.nomeFantasia && <span> * O <span className={styles.destaqueErro}>nome fantasia</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.nomeFantasia === '' && <span> * O <span className={styles.destaqueErro}>nome fantasia</span> precisa ser preenchido com um valor válido.</span>}
                 {formCadastro.senha !== confirmSenha && <span>* As <span className={styles.destaqueErro}>SENHAS</span> digitadas não correspondem.</span>}
-                {formCadastro.razaoSocial && <span>* O campo <span className={styles.destaqueErro}>razão social</span> precisa ser preenchido com um valor válido.</span>}
+                {formCadastro.razaoSocial === '' && <span>* O campo <span className={styles.destaqueErro}>razão social</span> precisa ser preenchido com um valor válido.</span>}
             </div>
         </ModalAviso>
         <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />

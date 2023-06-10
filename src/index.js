@@ -19,6 +19,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "./contexts/userContext";
 import Endereco from "./components/Endereco";
 import FormularioAplicacao from "./pages/FormularioAplicacao";
+import AprovacaoNegada from "./pages/AprovacaoNegada";
+import AprovacaoPendente from "./pages/AprovacaoPendente";
 
 function App() {
 
@@ -62,6 +64,14 @@ function App() {
     {
       path: "/empresa/formulario",
       element: <FormularioAplicacao/>
+    },
+    {
+      path: "/empresa/denied",
+      element: <AprovacaoNegada/>
+    },
+    {
+      path: "/empresa/pending",
+      element: <AprovacaoPendente/>
     }
   ]);
 

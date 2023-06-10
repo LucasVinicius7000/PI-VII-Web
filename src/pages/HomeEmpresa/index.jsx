@@ -21,12 +21,13 @@ import api from "../../services/Api";
 import { ToastError } from "../../utils/Toast";
 import { BiUserCircle } from "react-icons/bi";
 import { CgLogOut } from "react-icons/cg";
+import ModalAviso from "./../../components/ModalAviso";
 
 export default function HomeEmpresa() {
 
     const navigate = useNavigate();
-    const { estabelecimentoId, isAprooved, userId } = useContext(UserContext);
-    const [estabelecimentoInfo, setEstabelecimentoInfo] = useState(null);
+    const { estabelecimentoId, isAprooved, userId, userRole, estabelecimentoInfo } = useContext(UserContext);
+    
 
     useEffect(() => {
         if (estabelecimentoInfo == null && userId != null) {
@@ -37,9 +38,6 @@ export default function HomeEmpresa() {
                         if (!res.data.isSucessful) {
                             ToastError(res.data.clientMessage);
                         }
-                        else {
-                            setEstabelecimentoInfo(data);;
-                        }
                     }).catch((err) => {
                         ToastError("Ocorreu um erro ao recuperar informações do estabelecimento atual.");
                     })
@@ -49,8 +47,16 @@ export default function HomeEmpresa() {
     }, [userId]);
 
     useEffect(() => {
-        console.log(estabelecimentoInfo);
-    }, [estabelecimentoInfo]);
+        if (userRole === "Estabelecimento" && estabelecimentoInfo !== null) {
+            if (isAprooved === 1) { }
+            else if (isAprooved === 0) {
+                navigate("/empresa/denied");
+            }
+            else if (isAprooved === 2) {
+                navigate("/empresa/pending");
+            }
+        } else navigate("/")
+    }, [userRole, isAprooved, estabelecimentoInfo]);
 
     return <>
         <Header other={<div className={styles.miniUserArea}>
