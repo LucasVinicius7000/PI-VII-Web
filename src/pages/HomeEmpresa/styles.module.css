@@ -8,18 +8,10 @@
   flex-direction: column;
   font-family: 'Poppins';
   background-color: var(--font-color-1);
+  cursor: pointer;
+  user-select: none;
 }
 
-
-.categorias {
-  height: auto;
-  padding: 0 2rem;
-}
-
-.categorias h2 {
-  font-size: 20px;
-  color: var(--black-02);
-}
 
 .infiniteContainer {
   width: 100%;
@@ -30,8 +22,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3.5rem;
 }
 
 .infiniteContainer>* {
@@ -129,4 +122,19 @@
 .botao>* {
   width: 15.5rem;
   margin-right: 2rem;
+}
+
+.titulo {
+  margin-left: 1.5rem !important;
+  font-size: 20px;
+  color: var(--black-02);
+}
+
+@media(max-width:730px) {
+
+
+  .infiniteContainer {
+    gap:1rem;
+  } 
+
 }

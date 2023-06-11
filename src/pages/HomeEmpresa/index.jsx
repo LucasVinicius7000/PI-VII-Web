@@ -75,8 +75,8 @@ export default function HomeEmpresa() {
                 onClick={() => { navigate("/empresa/produto/cadastro") }}
             />
         </div>
-        <div className={styles.categorias}>
-            <h2>Categorias</h2>
+        <div>
+            <h2 className={styles.titulo}>Categorias</h2>
         </div>
         <div className={styles.scrollmenu}>
             <div className={styles.squares}>
@@ -137,8 +137,8 @@ export default function HomeEmpresa() {
             </div>
         </div>
         <div className={styles.container}>
-            <div className={styles.categorias} style={{ alignSelf: 'flex-start', marginBottom: "2rem", marginTop: "3rem" }}>
-                <h2>Produtos</h2>
+            <div className={styles.containerProdutos} style={{ alignSelf: 'flex-start', marginBottom: "2rem", marginTop: "3rem" }}>
+                <h2 className={styles.titulo}>Produtos</h2>
             </div>
             <div className={styles.categorias}>
                 <div className={styles.infiniteContainer}>
