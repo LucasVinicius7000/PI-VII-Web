@@ -40,13 +40,15 @@ export default function CadastroEmpresa() {
     });
     const [passIsVisible, setPassIsVisible] = useState(false);
 
-    useEffect(() => {
-        debugger;
-        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '' && confirmSenha !== '') {
+    const verifyFields = () => {
+        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
             setCanSubmit(true);
-        }
-    }, [formCadastro, confirmSenha])
+        } else setCanSubmit(false);
+    };
 
+    useEffect(() => {
+        verifyFields();
+    }, [canSubmit, formCadastro])
 
     const handleSubmit = async () => {
         try {
@@ -73,7 +75,7 @@ export default function CadastroEmpresa() {
                 {formCadastro.telefone === '' && <span>* O campo <span className={styles.destaqueErro}>telefone</span> precisa ser preenchido com um valor válido.</span>}
                 {formCadastro.email === '' && <span>* O campo <span className={styles.destaqueErro}>e-mail</span> precisa ser preenchido com um valor válido.</span>}
                 {formCadastro.nomeFantasia === '' && <span> * O <span className={styles.destaqueErro}>nome fantasia</span> precisa ser preenchido com um valor válido.</span>}
-                {formCadastro.senha !== confirmSenha && <span>* As <span className={styles.destaqueErro}>SENHAS</span> digitadas não correspondem.</span>}
+                {formCadastro.senha !== formCadastro.confirmSenha && <span>* As <span className={styles.destaqueErro}>SENHAS</span> digitadas não correspondem.</span>}
                 {formCadastro.razaoSocial === '' && <span>* O campo <span className={styles.destaqueErro}>razão social</span> precisa ser preenchido com um valor válido.</span>}
             </div>
         </ModalAviso>
@@ -89,6 +91,7 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.razaoSocial = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                 />
                 <Input
@@ -97,6 +100,7 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.nomeFantasia = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                 />
                 <Input
@@ -106,6 +110,7 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.cnpj = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                 />
                 <Input
@@ -117,6 +122,7 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.email = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                     startIcon={<img src={IconEmail} alt="Ícone usuário." />}
                 />
@@ -127,6 +133,7 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.telefone = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                 />
                 <Input
@@ -136,17 +143,18 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.senha = e.target.value;
                         setFormCadastro(formCadastro);
+                        verifyFields();
                     }}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             />
                     }
@@ -163,18 +171,18 @@ export default function CadastroEmpresa() {
                     onChange={(e) => {
                         formCadastro.confirmSenha = e.target.value;
                         setFormCadastro(formCadastro);
-                        setConfirmSenha(e.target.value)
+                        verifyFields();
                     }}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
-                                onClick={()=> setPassIsVisible(!passIsVisible)}
+                                onClick={() => setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             />
                     }
@@ -189,7 +197,7 @@ export default function CadastroEmpresa() {
                 <Button
                     text={"Cadastrar"}
                     onClick={async () => {
-                        debugger;
+                        verifyFields();
                         if (!canSubmit) {
                             setModalError(true);
                         } else {
