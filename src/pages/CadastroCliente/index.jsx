@@ -24,7 +24,7 @@ export default function CadastroEmpresa() {
     const navigate = useNavigate();
     const [hasError, setHasError] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(undefined);
-    const [passIsVisible, setPassIsVisible] = useState(true);
+    const [passIsVisible, setPassIsVisible] = useState(false);
     const [canSubmit, setCanSubmit] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

@@ -13,7 +13,7 @@ export default function AprovacaoPendente() {
     return <div className={styles.container}>
         <Header />
         <div className={styles.text}>
-            ⌛ Estamos analisando seu sua solicitação de cadastro. Em até 48h você receberá o retorno de sua sollicitção.😉
+            ⌛ Estamos analisando sua solicitação de cadastro. Em até 48h você receberá o retorno de sua solicitação.😉
         </div>
     </div>
 

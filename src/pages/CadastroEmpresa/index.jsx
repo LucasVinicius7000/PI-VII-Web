@@ -36,14 +36,16 @@ export default function CadastroEmpresa() {
         razaoSocial: '',
         cnpj: '',
         telefone: '',
+        confirmSenha: ''
     });
-    const [passIsVisible, setPassIsVisible] = useState(true);
+    const [passIsVisible, setPassIsVisible] = useState(false);
 
     useEffect(() => {
+        debugger;
         if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
             setCanSubmit(true);
         }
-    }, [formCadastro])
+    }, [formCadastro, confirmSenha])
 
 
     const handleSubmit = async () => {
@@ -120,6 +122,7 @@ export default function CadastroEmpresa() {
                 />
                 <Input
                     placeholder={"Telefone"}
+                    onlyNumbers
                     startIcon={<img src={IconTelefone} alt="Ícone usuário." />}
                     onChange={(e) => {
                         formCadastro.telefone = e.target.value;
@@ -129,6 +132,7 @@ export default function CadastroEmpresa() {
                 <Input
                     hasError={hasError}
                     placeholder={"Senha "}
+                    passwordIsShowing={passIsVisible}
                     onChange={(e) => {
                         formCadastro.senha = e.target.value;
                         setFormCadastro(formCadastro);
@@ -137,10 +141,12 @@ export default function CadastroEmpresa() {
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             />
                     }
@@ -153,15 +159,22 @@ export default function CadastroEmpresa() {
                 <Input
                     hasError={hasError}
                     placeholder={"Confirmar Senha"}
-                    onChange={(e) => setConfirmSenha(e.target.value)}
+                    passwordIsShowing={passIsVisible}
+                    onChange={(e) => {
+                        formCadastro.confirmSenha = e.target.value;
+                        setFormCadastro(formCadastro);
+                        setConfirmSenha(e.target.value)
+                    }}
                     endIcon={
                         passIsVisible ?
                             <AiFillEye
                                 size={32}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             /> :
                             <AiFillEyeInvisible
                                 size={32}
+                                onClick={()=> setPassIsVisible(!passIsVisible)}
                                 style={hasError ? { color: "red" } : { color: "#E8AF3C" }}
                             />
                     }
@@ -176,6 +189,7 @@ export default function CadastroEmpresa() {
                 <Button
                     text={"Cadastrar"}
                     onClick={async () => {
+                        debugger;
                         if (!canSubmit) {
                             setModalError(true);
                         } else {

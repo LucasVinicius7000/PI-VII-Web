@@ -58,12 +58,9 @@ export default function Login() {
     useEffect(() => {
         if (userRole === "Estabelecimento" && estabelecimentoInfo !== null) {
             if (isAprooved === 1) navigate("/homeEmpresa");
-            else if (isAprooved === 0) {
-                navigate("/empresa/denied");
-            }
-            else if (isAprooved === 2) {
-                navigate("/empresa/pending");
-            }
+            else if (isAprooved === 0) navigate("/empresa/denied");
+            else if (isAprooved === 2) navigate("/empresa/pending");
+            else if (isAprooved === 3) navigate("/empresa/formulario");
         }
     }, [userRole, isAprooved, estabelecimentoInfo]);
 
@@ -80,8 +77,8 @@ export default function Login() {
             <div className={styles.modal}>
                 <span>Para se cadastrar escolha uma das opções abaixo</span>
                 <div className={styles.options}>
-                    <div onClick={()=> navigate("/cliente/cadastro")}>Cadastrar como consumidor</div>
-                    <div onClick={()=> navigate("/cadastroEmpresa")}>Cadastrar minha empresa</div>
+                    <div onClick={() => navigate("/cliente/cadastro")}>Cadastrar como consumidor</div>
+                    <div onClick={() => navigate("/cadastroEmpresa")}>Cadastrar minha empresa</div>
                 </div>
             </div>
         </ModalAviso>
