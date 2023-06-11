@@ -27,6 +27,7 @@ export default function Login() {
     const [modalError, setModalError] = useState(false);
     const [canSubmit, setCanSubmit] = useState(false);
     const [isAwaitingAprooved, setIsAwaitingAprooved] = useState(false);
+    const [modalCadastro, setModalCadastro] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -73,6 +74,15 @@ export default function Login() {
                 <img src={IconeErro} alt="Ícone de erro." />
                 {(email === null) && <span>* O campo <span className={styles.destaqueErro}>EMAIL</span> precisa ser preenchido com um valor válido.</span>}
                 {(password === null) && <span>* O campo <span className={styles.destaqueErro}>SENHA</span> precisa ser preenchido com um valor válido.</span>}
+            </div>
+        </ModalAviso>
+        <ModalAviso isOpen={modalCadastro} onClick={() => setModalCadastro(false)}>
+            <div className={styles.modal}>
+                <span>Para se cadastrar escolha uma das opções abaixo</span>
+                <div className={styles.options}>
+                    <div onClick={()=> navigate("/cliente/cadastro")}>Cadastrar como consumidor</div>
+                    <div onClick={()=> navigate("/cadastroEmpresa")}>Cadastrar minha empresa</div>
+                </div>
             </div>
         </ModalAviso>
         <img id={styles.iconTop} alt="Ícones diversos no topo." src={DecorationIconsTop} />
@@ -137,8 +147,8 @@ export default function Login() {
                         }
                     }}
                 />
-                <div className={styles.box} onClick={() => { navigate("/cliente/cadastro") }}>
-                    <h2>Ainda não possui uma conta? <a onClick={() => { }}>Clique aqui</a></h2>
+                <div className={styles.box}>
+                    <h2>Ainda não possui uma conta? <a onClick={() => { setModalCadastro(true); }}>Clique aqui</a></h2>
                 </div>
             </form>
         </section>
