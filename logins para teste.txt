@@ -1,11 +1,16 @@
 
-Estabelecimento:
+Cliente:
 
 leoncity@gmail.com
 Rootqwe123
 
 
-Cliente:
+Estabelecimento:
 
-lucasvinicius123@gmail.com
+lv49541@gmail.com
+Rootqwe123
+
+Admin:
+
+lucascambraia@unipam.edu.br
 Rootqwe123
