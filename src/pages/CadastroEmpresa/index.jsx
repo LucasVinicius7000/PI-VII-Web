@@ -42,7 +42,7 @@ export default function CadastroEmpresa() {
 
     useEffect(() => {
         debugger;
-        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '') {
+        if (formCadastro.cnpj !== '' && formCadastro.email !== '' && formCadastro.senha !== '' && formCadastro.nomeFantasia !== '' && formCadastro.razaoSocial !== '' && formCadastro.telefone !== '' && confirmSenha !== '') {
             setCanSubmit(true);
         }
     }, [formCadastro, confirmSenha])
