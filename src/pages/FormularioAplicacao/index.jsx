@@ -14,11 +14,12 @@ import api from "../../services/Api";
 import { UserContext } from "../../contexts/userContext";
 import { useContext } from "react";
 import { ToastError, ToastSucess } from "../../utils/Toast";
+import { useNavigate } from "react-router-dom";
 
 export default function FormularioAplicacao() {
 
     const { estabelecimentoId, userId } = useContext(UserContext);
-
+    const navigate = useNavigate();
     const [addresses, setAddresses] = useState([]);
     const [placeId, setPlaceId] = useState(null);
     const [latitude, setLatitude] = useState(null);
@@ -74,6 +75,7 @@ export default function FormularioAplicacao() {
                 estabelecimentoId: estabelecimentoId
             });
             if (response.data.isSucessful) {
+                navigate("/");
                 ToastSucess("Formulário de aplicação submetido com sucesso.");
             }
             else {
