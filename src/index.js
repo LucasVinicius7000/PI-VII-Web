@@ -21,6 +21,7 @@ import Endereco from "./components/Endereco";
 import FormularioAplicacao from "./pages/FormularioAplicacao";
 import AprovacaoNegada from "./pages/AprovacaoNegada";
 import AprovacaoPendente from "./pages/AprovacaoPendente";
+import EstabelecimentoProdutos from "./pages/EstabelecimentoProdutos";
 
 function App() {
 
@@ -72,6 +73,10 @@ function App() {
     {
       path: "/empresa/pending",
       element: <AprovacaoPendente/>
+    },
+    {
+      path: "/home/estabelecimento/:id",
+      element: <EstabelecimentoProdutos/>
     }
   ]);
 

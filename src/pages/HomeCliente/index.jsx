@@ -17,15 +17,16 @@ import { useEffect, useContext, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import api from "../../services/Api";
 import { ToastError } from "../../utils/Toast";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeCliente() {
 
+    const navigate = useNavigate();
     const { userCoordinates } = useContext(UserContext);
     const [raio, setRaio] = useState(5);
     const [estabelecimentos, setEstabelecimentos] = useState([]);
 
     useEffect(() => {
-        debugger;
         if (raio != null && userCoordinates != null && estabelecimentos.length === 0) {
             const getEstabelecimentos = async () => {
 
@@ -111,29 +112,23 @@ export default function HomeCliente() {
                 </a>
             </div>
         </div>
-        <div className={styles.container}>
-            <div className={styles.categorias}>
-                <div className={styles.box}>
-                    <h2>Estabelecimentos</h2>
-                    <div className={styles.verMais}>
-                        <a href="../estabelecimentos">
-                            <p>Ver mais</p>
-                        </a>
-                    </div>
-                </div>
-                <br />
-                <div className={styles.infiniteContainer}>
-                    {
-                        estabelecimentos.map((item) => {
-                            return <CardGeral
-                                titulo={item?.nomeFantasia}
-                                local={item.endereco}
-                                image={item.urlLogoPerfil}
-                            />
-                        })
-                    }
 
-                </div>
+        <div className={styles.container}>
+            <div className={styles.box}>
+                <h2>Estabelecimentos</h2>
+            </div>
+            <br />
+            <div className={styles.infiniteContainer}>
+                {
+                    estabelecimentos.map((item) => {
+                        return <CardGeral
+                            titulo={item?.nomeFantasia}
+                            local={item?.endereco}
+                            image={item?.urlLogoPerfil}
+                            onClick={()=>{navigate(`/home/estabelecimento/${item?.id}`)}}
+                        />
+                    })
+                }
             </div>
         </div>
     </>

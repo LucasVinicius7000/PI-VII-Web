@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 export default function CardGeral
-({ image, titulo, local, preco }) {
+({ image, titulo, local, preco, onClick }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onClick}>
       <div id={styles.imagem}>
         <img srcSet={image} alt="" />
       </div>
