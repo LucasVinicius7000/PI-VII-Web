@@ -61,7 +61,7 @@ export default function Login() {
             else if (isAprooved === 0) navigate("/empresa/denied");
             else if (isAprooved === 2) navigate("/empresa/pending");
             else if (isAprooved === 3) navigate("/empresa/formulario");
-        }
+        } else if (userRole === "Cliente") navigate("/home");
     }, [userRole, isAprooved, estabelecimentoInfo]);
 
 

@@ -8,10 +8,12 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 import CardGeral from "./../../components/CardProduto";
 import CardProduto from "./../../components/CardProduto";
+import { useNavigate } from "react-router-dom";
 
 export default function EstabelecimentoProdutos() {
 
     const { id } = useParams();
+    const navigate = useNavigate();
     const { userToken } = useContext(UserContext);
     const [estabelecimentoInfo, setEstabelecimentoInfo] = useState(null);
 
@@ -51,8 +53,9 @@ export default function EstabelecimentoProdutos() {
                             return <CardProduto
                                 titulo={p?.nome}
                                 image={p?.urlImagem}
-                                precoAntigo={p?.valorComDesconto !== null ? 'R$ ' +p?.valorComDesconto : ''}
+                                precoAntigo={p?.valorComDesconto !== null ? 'R$ ' + p?.valorComDesconto : ''}
                                 preco={'R$ ' + p?.valorUnitario}
+                                onClick={() => { navigate(`../produto/${p?.id}`) }}
                             />
                         })
                     }

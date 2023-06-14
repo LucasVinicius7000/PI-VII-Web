@@ -22,6 +22,7 @@ import FormularioAplicacao from "./pages/FormularioAplicacao";
 import AprovacaoNegada from "./pages/AprovacaoNegada";
 import AprovacaoPendente from "./pages/AprovacaoPendente";
 import EstabelecimentoProdutos from "./pages/EstabelecimentoProdutos";
+import Produto from "./pages/Produto";
 
 function App() {
 
@@ -77,6 +78,10 @@ function App() {
     {
       path: "/home/estabelecimento/:id",
       element: <EstabelecimentoProdutos/>
+    },
+    {
+      path: "/produto/:id",
+      element: <Produto/>
     }
   ]);
 
