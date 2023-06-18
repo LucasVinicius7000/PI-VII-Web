@@ -53,8 +53,8 @@ export default function EstabelecimentoProdutos() {
                             return <CardProduto
                                 titulo={p?.nome}
                                 image={p?.urlImagem}
-                                precoAntigo={p?.valorComDesconto !== null ? 'R$ ' + p?.valorComDesconto : ''}
-                                preco={'R$ ' + p?.valorUnitario}
+                                precoAntigo={p?.valorComDesconto !== null ? 'R$ ' + p?.valorUnitario : ''}
+                                preco={p?.valorComDesconto !== null ? 'R$ ' + p?.valorComDesconto : 'R$ ' + p?.valorUnitario}
                                 onClick={() => { navigate(`../produto/${p?.id}`) }}
                             />
                         })

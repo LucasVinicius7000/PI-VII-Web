@@ -100,6 +100,56 @@
   gap: 0.60rem;
 }
 
+.vendidoPor {
+  width: 100%;
+  background-color: #EEEEEE;
+  color: var(--font-color-6);
+  font-weight: 600;
+  padding: .5rem 0 .5rem 2rem;
+  border-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: .5rem;
+  color:#3D3D4D;
+  font-weight: 600;
+}
+
+.optionsVendidoPor {
+  position: relative;
+  right: 0.35rem;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+}
+
+.optionsVendidoPor input {
+  all: unset;
+}
+
+
+.optionsVendidoPor input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: .85rem;
+  height: .85rem;
+  border-radius: 50%;
+  border: 2px solid #3D3D4D;
+  outline: none;
+  cursor: pointer;
+  margin: 0 0.45rem;
+  margin-top: 0.3rem;
+}
+
+
+.optionsVendidoPor input[type="radio"]:checked{
+  background-color: #3D3D4D;
+}
+
+
 @media(max-width:500px) {
   .buttonArea {
     padding: 0 15% 0 15%;

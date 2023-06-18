@@ -3,30 +3,49 @@ import PropTypes from 'prop-types';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import styles from './styles.module.css';
 
-export default function InputNumber({ titleInput, setValue }) {
+export default function InputNumber({ titleInput, setValue, limit = 0, interval = 1, noFloats }) {
   const [inputValue, setInputValue] = useState(0);
 
   const handleInputChange = (event) => {
-    const newValue = parseInt(event.target.value);
+    if (event.target.value === '') { setInputValue(0); setValue(0) }
+    let lastValue = inputValue;
+    debugger;
+    const newValue = noFloats ? parseInt(event.target.value) : parseFloat(event.target.value);
     if (!isNaN(newValue) && newValue >= 0) {
       setInputValue(newValue);
+      setValue(newValue);
     } else {
       setInputValue(0);
+      setValue(newValue);
+    };
+    if (limit !== 0 && newValue > limit) {
+      setInputValue(lastValue);
+      setValue(newValue);
     };
   };
 
   const handleIncrementClick = () => {
-    const newValue = inputValue + 1;
+    let lastValue = inputValue;
+    const newValue = inputValue + interval;
     setInputValue(newValue);
     setValue(newValue);
+    if (limit !== 0 && newValue > limit) {
+      setInputValue(lastValue);
+      setValue(newValue);
+    };
   };
 
   const handleDecrementClick = () => {
-    const newValue = inputValue - 1;
+    let lastValue = inputValue;
+    const newValue = inputValue - interval;
     if (newValue >= 0) {
-      setInputValue(newValue);
-      setValue(newValue);
+      setInputValue(Math.round(newValue * 100) / 100);
+      setValue(Math.round(newValue * 100) / 100);
     }
+    if (limit !== 0 && newValue > limit) {
+      setInputValue(Math.round(lastValue * 100) / 100);
+      setValue(Math.round(lastValue * 100) / 100);
+    };
   };
 
 

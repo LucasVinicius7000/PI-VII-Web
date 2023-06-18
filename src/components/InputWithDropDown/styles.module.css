@@ -1,0 +1,75 @@
+.container {
+    width: 100%;
+    background-color: #EEEEEE;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input {
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+    width: inherit;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    color:#464647;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.input::placeholder{
+    color:var(--font-color-6);
+}
+
+.input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.input{
+    width: 80%;
+}
+
+.options {
+    cursor: pointer;
+    width: 20% !important;
+    min-width: 20% !important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+#items {
+    width: 100%;
+    box-sizing: border-box;
+    user-select: none;
+    position: absolute;
+    bottom: 2.44rem;
+    right: 0rem;
+    background-color: var(--font-color-1);
+    border-radius: .5rem .5rem .5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:.5rem;
+}
+
+#items > *{
+    text-align: center;
+    padding: .2rem 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+#items>*:hover {
+    background-color: #E2E2E2 !important;
+}
+
+#items>*:hover:first-child{
+    border-radius: .5rem .5rem 0 0;
+}
