@@ -16,6 +16,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { ToastError, ToastSucess } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
+import InputWithDropDown from "./../../components/InputWithDropDown";
 
 export default function CadastroProduto() {
 
@@ -34,6 +35,8 @@ export default function CadastroProduto() {
   const [imagemPrincipal, setImagemPrincipal] = useState(null);
   const [canSubmit, setCanSubmit] = useState(false);
   const [modalError, setModalError] = useState(false);
+  const [formaVenda, setFormaVenda] = useState(0);
+  const [unidadeMedida, setUnidadeMedida] = useState('g')
 
   useEffect(() => {
     if (!canSubmit) {
@@ -44,23 +47,42 @@ export default function CadastroProduto() {
   }, [canSubmit, nome, peso, categoria, quantidade, valorUnitario, imagemPrincipal]);
 
   const handleSetQuantidade = (value) => {
-    setQuantidade(value);
+    if(formaVenda === 0){
+      setQuantidade(parseInt(value));
+    }
+    else{
+      if(formaVenda === 2) setUnidadeMedida('litro(s)')
+      else if(formaVenda === 3) setUnidadeMedida('kg')
+      setQuantidade(value);
+    };
   }
 
   useEffect(() => {
     if (userRole === "Estabelecimento" && estabelecimentoInfo !== null) {
-        if (isAprooved === 1) {}
-        else if (isAprooved === 0){
-            navigate("/empresa/denied");
-        }
-        else if(isAprooved === 2){
-            navigate("/empresa/pending");
-        }
+      if (isAprooved === 1) { }
+      else if (isAprooved === 0) {
+        navigate("/empresa/denied");
+      }
+      else if (isAprooved === 2) {
+        navigate("/empresa/pending");
+      }
     } else navigate("/")
-}, [userRole, isAprooved, estabelecimentoInfo]);
+  }, [userRole, isAprooved, estabelecimentoInfo]);
+
+  useEffect(() => {
+    if (formaVenda === 2) {
+      setUnidadeMedida('litro(s)');
+      setPeso(1);
+    }
+    else if(formaVenda === 1){
+      setUnidadeMedida('kg');
+      setPeso(1);
+    }
+  }, [formaVenda]);
 
   const submit = async () => {
     try {
+      debugger;
       let response = await api.post("produto/cadastrar", {
         estabelecimentoId: estabelecimentoId,
         nome: nome,
@@ -76,6 +98,8 @@ export default function CadastroProduto() {
         nomeArquivoImagem: imagemPrincipal?.name,
         extensaoArquivoImagem: imagemPrincipal?.fileExtension,
         conteudoArquivoImagem: imagemPrincipal?.base64.split(',')[1],
+        vendidoPor: formaVenda,
+        UnidadeMedida: unidadeMedida
       });
 
       if (response.data?.isSucessful) {
@@ -85,13 +109,13 @@ export default function CadastroProduto() {
       else ToastError(response?.data?.clientMessage);
 
     } catch (error) {
-      if(error.response){
+      if (error.response) {
         ToastError(error.response.data.clientMessage);
       }
-      else{
+      else {
         ToastError(error.message);
       }
-      
+
     }
   };
 
@@ -124,7 +148,13 @@ export default function CadastroProduto() {
           <h2>Detalhes do produto</h2>
           <Input type="text" onChange={(e) => setNome(e.target.value)} placeholder={"Nome"} height={"3.2rem"} backgroundColor={"#eee"} />
           <Input type="text" onChange={(e) => setMarca(e.target.value)} placeholder={"Marca"} height={"3.2rem"} backgroundColor={"#eee"} />
-          <Input onlyNumbers={true} onChange={(e) => setPeso(e.target.value)} placeholder={"Peso (Kg)"} height={"3.2rem"} backgroundColor={"#eee"} />
+          <InputWithDropDown setInternal={peso} onChangeText={(e)=>setPeso(e.target.value)} type={'number'} placeholder={'Peso'} selected={unidadeMedida}>
+            <div onClick={()=>{setUnidadeMedida('ml')}}>ml</div>
+            <div onClick={()=>{setUnidadeMedida('litro(s)')}}>litro(s)</div>
+            <div onClick={()=>{setUnidadeMedida('g')}}>g</div>
+            <div onClick={()=>{setUnidadeMedida('kg')}}>kg</div>
+          </InputWithDropDown>
+          {/* <Input onlyNumbers={true} onChange={(e) => setPeso(e.target.value)} placeholder={"Peso (Kg)"} height={"3.2rem"} backgroundColor={"#eee"} /> */}
           <DropdownProduct height={"3.2rem"}
             options={[
               { value: '0', label: 'Hortifruti' },
@@ -137,7 +167,10 @@ export default function CadastroProduto() {
               { value: '7', label: 'Bebidas' },
               { value: '8', label: 'Higiene e Limpeza' },
             ]} placeholder={"Categoria"}
-            onSelect={(option) => setCategoria(option.value)}
+            onSelect={(option) => {
+              debugger;
+              setCategoria(option.value)
+            }}
           />
           <InputDate
             value={dataValidade}
@@ -148,14 +181,21 @@ export default function CadastroProduto() {
 
         <div className={styles.estoque}>
           <h2>Estoque</h2>
-          <InputNumber setValue={handleSetQuantidade} titleInput="Quantidade Disponível" />
+          <div className={styles.vendidoPor}>
+            <span>Vendido por:</span>
+            <div className={styles.optionsVendidoPor}>
+              <input onChange={() => setFormaVenda(0)} type='radio' name="vendido" value={'0'}></input>Unidade
+              <input onChange={() => setFormaVenda(1)} type='radio' name="vendido" value={'1'}></input>Kg
+              <input onChange={() => setFormaVenda(2)} type='radio' name="vendido" value={'2'}></input>Litro
+            </div>
+          </div>
+          <InputNumber noFloats setValue={handleSetQuantidade} titleInput={formaVenda === 0 ? "Unidades em estoque" : formaVenda === 1 ? "Kg em estoque" : formaVenda === 2 ? "Litro(s) em estoque" : ''} />
           <Input onlyNumbers={true} value={valorUnitario} onChange={(e) => {
             setValorUnitario(e.target.value);
-          }} placeholder={"Valor Unitário"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
+          }} placeholder={`Valor por ${formaVenda === 0 ? 'Unidade' : formaVenda === 1 ? 'Kg' : formaVenda === 2 ? 'Litro' : ''}`} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
           <Input onlyNumbers={true} value={valorComDesconto} onChange={(e) => {
             setValorComDesconto(e.target.value);
           }} placeholder={"Valor com Desconto"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
-          <Input type="text" onChange={(e) => setLote(e.target.value)} placeholder={"Lote"} width={"19rem"} height={"3.0rem"} backgroundColor={"#eee"} />
           <Input type="text" onChange={(e) => setObservacao(e.target.value)} placeholder={"Observação/Detalhamento"} width={"19rem"} height={"3.2rem"} backgroundColor={"#eee"} />
 
         </div>
