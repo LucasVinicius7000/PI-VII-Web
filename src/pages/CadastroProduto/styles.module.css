@@ -112,7 +112,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: .5rem;
-  color:#3D3D4D;
+  color: #3D3D4D;
   font-weight: 600;
 }
 
@@ -145,7 +145,7 @@
 }
 
 
-.optionsVendidoPor input[type="radio"]:checked{
+.optionsVendidoPor input[type="radio"]:checked {
   background-color: #3D3D4D;
 }
 
@@ -186,7 +186,22 @@
     width: 100% !important;
   }
 
+  .vendidoPor {
+    max-height: auto;
+    height: auto;
+  }
 
+  .optionsVendidoPor {
+    right: 0;
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .optionsVendidoPor input[type="radio"]{
+    border-radius: 100%;
+    width: 0.85rem !important;
+    height: 0.85rem !important;
+  }
 
 
 }

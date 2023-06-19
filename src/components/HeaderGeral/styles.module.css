@@ -11,6 +11,10 @@
     display : flex;
 }
 
+.box a{
+    cursor: pointer;
+}
+
 .colun {
     flex-direction: column;
     margin-top: -20px;

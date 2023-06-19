@@ -1,0 +1,93 @@
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    max-height: auto;
+    min-height: 100%;
+    padding: 5%;
+}
+
+#pattern3 {
+    font-size: 1.125rem;
+    color: #3D3D4D;
+    font-weight: 600;
+}
+
+.containerList {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
+.pedido {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    user-select: none;
+}
+
+#itens {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap:.55rem;
+}
+
+#itens> :first-child {
+    font-size: 0.8125rem;
+    color: #3D3D4D;
+    font-weight: 400;
+}
+
+#itens> :nth-child(2){
+    color: #39B100;
+    font-weight: 600;
+}
+
+.list {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.list>div {
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: auto;
+    padding: 5px 10px;
+    background-color: #F0F0F5;
+}
+
+.list>div :first-child {
+    white-space: pre-wrap;
+    color: #3D3D4D;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.list>div :nth-child(2) {
+    font-size: 0.8125rem;
+    color: #3D3D4D;
+    font-weight: 400;
+}
+
+#status :nth-child(2){
+    font-weight: 900;
+}
+
+@media(min-width:550px){
+    .list>div{
+        max-width:20.4375rem;
+        padding: 10px 20px;
+    }
+}

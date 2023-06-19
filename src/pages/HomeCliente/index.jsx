@@ -18,6 +18,7 @@ import { UserContext } from "../../contexts/userContext";
 import api from "../../services/Api";
 import { ToastError } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../../components/NavBar";
 
 export default function HomeCliente() {
 
@@ -48,6 +49,7 @@ export default function HomeCliente() {
 
     return <>
         <Header />
+        <NavBar onPedidosClick={()=> navigate('../pedidos')} />
         <div className={styles.search} >
             <Search type="text" placeholder="Qual produto você procura?" />
         </div>
