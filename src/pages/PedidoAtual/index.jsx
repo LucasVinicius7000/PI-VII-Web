@@ -168,7 +168,7 @@ export default function PedidoAtual() {
             'Taxa de entrega: *R$ ' + taxa +
             'Total: *R$ ' + calculateTotalPedido(pedidoAtual?.produtosPedidos) + '*\n\n' + '✅';
 
-        const url = `https://api.whatsapp.com/send?phone=55${34999607541}&text=${encodeURIComponent(message)}`;
+        const url = `https://api.whatsapp.com/send?phone=55${estabelecimento?.telefone}&text=${encodeURIComponent(message)}`;
         if(await concluirPedido()){
             window.open(url);
             setConfirmPedido(true);
