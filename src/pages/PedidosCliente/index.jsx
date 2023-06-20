@@ -46,7 +46,7 @@ export default function PedidosCliente() {
             <HeaderGeral onClickBack={() => navigate('../home')} />
             <NavBar
                 onPedidosClick={() => navigate('../pedidos')}
-                onHomeClick={()=> navigate('../home')}
+                onHomeClick={() => navigate('../home')}
             />
             <div className={styles.container}>
                 <div>
@@ -89,11 +89,13 @@ export default function PedidosCliente() {
 const calculateTotalPedido = (listProdutos) => {
     let total = 0;
     listProdutos.forEach(element => {
-        if (element.valorComDesconto != null) {
-            total += element.valorComDesconto * element.quantidadePedido;
-        }
-        else {
-            total += element.valorUnitario * element.quantidadePedido;
+        if (!element?.removed) {
+            if (element.valorComDesconto != null) {
+                total += element.valorComDesconto * element.quantidadePedido;
+            }
+            else {
+                total += element.valorUnitario * element.quantidadePedido;
+            }
         }
     });
     return parseFloat(total).toFixed(2);
@@ -102,8 +104,10 @@ const calculateTotalPedido = (listProdutos) => {
 const calculateQuantidadeItemsPedido = (listProdutos) => {
     let total = 0;
     listProdutos.forEach(element => {
-        if (element.vendidoPor == 0) total += element.quantidadePedido;
-        else total += 1;
+        if (!element?.removed) {
+            if (element.vendidoPor == 0) total += element.quantidadePedido;
+            else total += 1;
+        }
     });
     return total;
 }

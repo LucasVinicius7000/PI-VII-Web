@@ -16,6 +16,7 @@ export default function UserContextProvider({ children }) {
     const [clienteId, setClienteId] = useState(null);
     const [userId, setUserId] = useState(null);
     const [estabelecimentoInfo, setEstabelecimentoInfo] = useState(null);
+    const [enderecoCliente, setEnderecoCliente] = useState(null);
 
     useEffect(() => {
         if (userToken != null) {
@@ -69,6 +70,7 @@ export default function UserContextProvider({ children }) {
         setUserRole,
         setUserId,
         setEstabelecimentoInfo,
+        setEnderecoCliente,
         isAprooved,
         userRole,
         isAuthenticate,
@@ -78,6 +80,7 @@ export default function UserContextProvider({ children }) {
         clienteId,
         userId,
         estabelecimentoInfo, 
+        enderecoCliente
     }}>
         {children}
     </UserContext.Provider>

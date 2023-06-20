@@ -11,7 +11,7 @@ import HomeEmpresa from "../../pages/HomeEmpresa";
 export default function Endereco() {
 
 
-    const { userCoordinates, setUserCoordinates, userRole } = useContext(UserContext);
+    const { userCoordinates, setUserCoordinates, userRole, setEnderecoCliente } = useContext(UserContext);
 
     const [sessionToken, setSessionToken] = useState(uuidv4());
     const [addresses, setAddresses] = useState([]);
