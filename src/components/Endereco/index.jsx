@@ -7,12 +7,13 @@ import { UserContext } from "../../contexts/userContext";
 import { v4 as uuidv4 } from 'uuid';
 import HomeCliente from "../../pages/HomeCliente";
 import HomeEmpresa from "../../pages/HomeEmpresa";
+import { useNavigate } from "react-router-dom";
 
 export default function Endereco() {
 
 
-    const { userCoordinates, setUserCoordinates, userRole, setEnderecoCliente } = useContext(UserContext);
-
+    const { userCoordinates, setUserCoordinates, userRole } = useContext(UserContext);
+    const navigate = useNavigate();
     const [sessionToken, setSessionToken] = useState(uuidv4());
     const [addresses, setAddresses] = useState([]);
     const [addressSelected, setAddressSelected] = useState('');
@@ -34,18 +35,20 @@ export default function Endereco() {
     }
 
     const choiceHome = () => {
-        if (userRole === 'Cliente') {
+        if (userRole === 'Cliente' && userCoordinates != null && userCoordinates?.lat !== null) {
             return <HomeCliente />
         }
-        else return <div>Nada pra ver aqui..</div>;
+        else {
+            navigate("../");
+        };
     }
 
-    useEffect(() => {
-        const firstSearch = async () => {
-            await BuscaCoordenadasPorId('', sessionToken);
-        }
-        firstSearch();
-    }, []);
+    // useEffect(() => {
+    //     const firstSearch = async () => {
+    //         await BuscaCoordenadasPorId('', sessionToken);
+    //     }
+    //     firstSearch();
+    // }, []);
 
     const handleStart = () => {
         // Salva as coordenadas no localStorage
@@ -58,7 +61,9 @@ export default function Endereco() {
         // Confere se as coordenadas foram salvas no localStorage
         let lat = localStorage.getItem("lat");
         let lng = localStorage.getItem("lng");
-        if (userCoordinates?.lat && userCoordinates?.lng && lat && lng) setRenderChildren(true);
+        if (userCoordinates?.lat !== null && userCoordinates?.lng && lat && lng){
+            setRenderChildren(true);
+        }
     }, [userCoordinates]);
 
 
@@ -77,7 +82,7 @@ export default function Endereco() {
                 searchIcon={<BsSearch size={20} style={{ paddingRight: "1rem", cursor: "pointer" }} />}
                 placeholder={"Busque seu endereço aqui.."}
             />
-            {userCoordinates?.lat && userCoordinates?.lng ? <div onClick={handleStart} className={styles.start}>Começar</div> : ''}
+            {addressSelected !== '' && userCoordinates != null && userCoordinates?.lat !== "null" && userCoordinates?.lat != undefined  ? <div onClick={() => { handleStart() }} className={styles.start}>Começar</div> : ''}
         </div>
     </div> : choiceHome()
 

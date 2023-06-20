@@ -29,6 +29,7 @@ import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 import PedidosCliente from "./pages/PedidosCliente";
 import PedidoAtual from "./pages/PedidoAtual";
+import AprovarEmpresas from "./pages/AprovarEmpresas";
 
 let deferredPrompt;
 
@@ -201,6 +202,10 @@ function App(Component, pageProps) {
     {
       path: "/pedidoAtual",
       element: <PedidoAtual/>
+    },
+    {
+      path: "/admin/aprovar",
+      element: <AprovarEmpresas/>
     }
   ]);
 

@@ -26,8 +26,8 @@ import ModalAviso from "./../../components/ModalAviso";
 export default function HomeEmpresa() {
 
     const navigate = useNavigate();
-    const { estabelecimentoId, isAprooved, userId, userRole, estabelecimentoInfo } = useContext(UserContext);
-    
+    const { estabelecimentoId, isAprooved, setUserRole, setUserToken, userId, userRole, estabelecimentoInfo } = useContext(UserContext);
+
 
     useEffect(() => {
         if (estabelecimentoInfo == null && userId != null) {
@@ -63,7 +63,14 @@ export default function HomeEmpresa() {
             <span style={{ color: "var(--details-5)" }}>
                 <BiUserCircle size={20} /> {estabelecimentoInfo?.nomeFantasia}
             </span>
-            <CgLogOut size={30} />
+            <CgLogOut onClick={() => {
+                localStorage.setItem('lat', null);
+                localStorage.setItem('lng', null);
+                localStorage.setItem('token', null);
+                setUserToken(null);
+                setUserRole(null);
+                window.location.reload();
+            }} size={30} />
         </div>} />
         <div className={styles.search} >
             <Search type="text" placeholder="Qual produto você procura?" />

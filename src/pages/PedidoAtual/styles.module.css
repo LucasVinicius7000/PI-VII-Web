@@ -40,6 +40,14 @@
     white-space: pre-wrap;
 }
 
+.estabelecimento>img{
+    max-width: 12.25rem;
+    max-height: 7.625rem;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px 0 0 8px;
+}
+
 .estabelecimento>div :first-child {
     white-space: pre-wrap;
     color: #3D3D4D;

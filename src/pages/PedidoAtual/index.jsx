@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from './../../contexts/userContext';
 import api from "../../services/Api";
-import { ToastError } from "../../utils/Toast";
+import { ToastError, ToastSucess } from "../../utils/Toast";
 import CardProdutoPedido from "../../components/CardProdutoPedido";
 import { BuscarEnderecoPorCoordenadas, BuscaEnderecosPorTexto, BuscaCoordenadasPorId } from "../../services/GoogleMapsApi";
 import Search from "./../../components/Search";
@@ -121,10 +121,21 @@ export default function PedidoAtual() {
     }
 
     const concluirPedido = async () => {
-
+        try {
+            let response = await api.post(`pedido/confirmar?idPedido=${pedidoAtual?.id}`);
+            if (response.data.isSucessful) {
+                ToastSucess("Pedido confirmado com sucesso.");
+                return true;
+            }
+            else ToastError(response.data.clientMessage);
+            return false;
+        } catch (error) {
+            ToastError(error.response.data.clientMessage);
+            return false;
+        }
     }
 
-    const handleWhatsAppClick = () => {
+    const handleWhatsAppClick = async () => {
         let produtos = '\n ';
         let taxa = formaEntrega == 'Entrega' ? parseFloat(estabelecimento?.taxaMinimaEntrega + (estabelecimento?.taxaKmRodado * distancia)).toFixed(2) + '*\n' : '0,00*\n';
         produtosPedidos?.map((p) => {
@@ -158,8 +169,11 @@ export default function PedidoAtual() {
             'Total: *R$ ' + calculateTotalPedido(pedidoAtual?.produtosPedidos) + '*\n\n' + '✅';
 
         const url = `https://api.whatsapp.com/send?phone=55${34999607541}&text=${encodeURIComponent(message)}`;
-        window.open(url);
-        setConfirmPedido(true);
+        if(await concluirPedido()){
+            window.open(url);
+            setConfirmPedido(true);
+        } else return;
+        
     };
 
 
@@ -214,7 +228,7 @@ export default function PedidoAtual() {
                     {formaEntrega == null && <span>* Selecione se o pedido deve ser entregue <span className={styles.destaqueErro}>ou</span> será retirado no local.</span>}
                 </div>
             </ModalAviso>
-            <ModalAviso isOpen={confirmPedido} onClick={() => setModalError(false)}>
+            <ModalAviso isOpen={confirmPedido} onClick={() => navigate("../home")}>
                 <div className={styles.modalError}>
                     <img src={PedidoConfirmado} alt="Ícone de confirmação." />
                     <span>Pedido Confirmado!</span>

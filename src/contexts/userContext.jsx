@@ -17,6 +17,7 @@ export default function UserContextProvider({ children }) {
     const [userId, setUserId] = useState(null);
     const [estabelecimentoInfo, setEstabelecimentoInfo] = useState(null);
     const [enderecoCliente, setEnderecoCliente] = useState(null);
+    const [email,setEmail] = useState(null);
 
     useEffect(() => {
         if (userToken != null) {
@@ -25,6 +26,7 @@ export default function UserContextProvider({ children }) {
                 const tokenDecoded = decodeToken(userToken);
                 if (tokenDecoded == null) throw new Error("Erro ao decodificar token do usuário.");
                 api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+                setEmail(tokenDecoded.Email);
                 if (tokenDecoded.role === "Estabelecimento") {
                     setEstabelecimentoId(tokenDecoded.EntityId);
                     const verifyIsAprooved = async () => {
@@ -71,6 +73,8 @@ export default function UserContextProvider({ children }) {
         setUserId,
         setEstabelecimentoInfo,
         setEnderecoCliente,
+        setEmail,
+        email,
         isAprooved,
         userRole,
         isAuthenticate,

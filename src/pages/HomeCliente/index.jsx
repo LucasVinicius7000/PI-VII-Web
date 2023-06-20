@@ -19,11 +19,13 @@ import api from "../../services/Api";
 import { ToastError } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar";
+import { CgLogOut } from "react-icons/cg";
+import { BiUserCircle } from "react-icons/bi";
 
 export default function HomeCliente() {
 
     const navigate = useNavigate();
-    const { userCoordinates } = useContext(UserContext);
+    const { userCoordinates, setUserToken, setUserCoordinates, setUserRole, email } = useContext(UserContext);
     const [raio, setRaio] = useState(5);
     const [estabelecimentos, setEstabelecimentos] = useState([]);
 
@@ -48,8 +50,20 @@ export default function HomeCliente() {
     }, [raio, userCoordinates, estabelecimentos]);
 
     return <>
-        <Header />
-        <NavBar onPedidosClick={()=> navigate('../pedidos')} />
+        <Header other={<div className={styles.miniUserArea}>
+            <span style={{ color: "var(--details-5)" }}>
+                <BiUserCircle size={20} /> {email}
+            </span>
+            <CgLogOut onClick={() => {
+                localStorage.removeItem('lat');
+                localStorage.removeItem('lng');
+                localStorage.removeItem('token');
+                setUserToken(null);
+                setUserRole(null);
+                setUserCoordinates(null);
+            }} size={30} />
+        </div>} />
+        <NavBar onPedidosClick={() => navigate('../pedidos')} />
         <div className={styles.search} >
             <Search type="text" placeholder="Qual produto você procura?" />
         </div>
@@ -127,7 +141,7 @@ export default function HomeCliente() {
                             titulo={item?.nomeFantasia}
                             local={item?.endereco}
                             image={item?.urlLogoPerfil}
-                            onClick={()=>{navigate(`/home/estabelecimento/${item?.id}`)}}
+                            onClick={() => { navigate(`/home/estabelecimento/${item?.id}`) }}
                         />
                     })
                 }
